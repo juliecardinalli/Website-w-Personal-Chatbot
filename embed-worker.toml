@@ -1,0 +1,7 @@
+name = "embed-worker"
+main = "backend/embed-worker.js"
+compatibility_date = "2025-07-27"
+
+[ai]
+binding = "EMBEDDINGS"
+model = "@cf/baai/bge-small-en-v1.5"
