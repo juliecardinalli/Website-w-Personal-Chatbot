@@ -1,19 +1,21 @@
 export default {
   async fetch(request, env, ctx) {
-    if (request.method !== "POST") {
-      return new Response("Only POST supported", { status: 405 });
-    }
+    try {
+      const { text } = await request.json();
+      console.log("Got text:", text);
 
-    const { text } = await request.json();
-    if (!text) {
-      return new Response("Missing 'text' in request body", { status: 400 });
-    }
+      // Call the model by name
+      const embedding = await env.AI.run("@cf/baai/bge-small-en-v1.5", { text });
+      console.log("Got embedding:", embedding);
 
-    // Call Cloudflare Workers AI embedding model
-    const result = await env.EMBEDDINGS.run(text);
-    
-    return new Response(JSON.stringify({ embedding: result }), {
-      headers: { "Content-Type": "application/json" }
-    });
+      return new Response(JSON.stringify({ embedding: embedding.data }), {
+  headers: { "Content-Type": "application/json" }
+});
+
+    } catch (err) {
+      console.error("Worker error:", err);
+      return new Response("Internal error", { status: 500 });
+    }
   }
 };
+

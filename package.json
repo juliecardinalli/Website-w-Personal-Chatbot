@@ -2,8 +2,11 @@
   "name": "julieperplexity-agent",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "dependencies": {
+    "dotenv": "^17.2.1",
     "next": "14.0.0",
+    "node-fetch": "^3.3.2",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
