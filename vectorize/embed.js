@@ -36,13 +36,13 @@ async function generateEmbeddings() {
   const vectors = [];
 
   for (let i = 0; i < qna.length; i++) {
-    const { question, answer } = qna[i];
+    const { id, question, answer } = qna[i];
     const inputText = `${question}\n${answer}`;
     console.log(`Embedding [${i + 1}/${qna.length}]: ${question}`);
     const embedding = await createEmbedding(inputText);
 
     vectors.push({
-      id: `q${i + 1}`,
+      id,
       values: embedding,
       metadata: { question, answer },
     });
