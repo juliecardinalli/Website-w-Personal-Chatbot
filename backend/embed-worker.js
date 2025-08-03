@@ -1,21 +1,24 @@
+// embed-worker/index.js
+
 export default {
-  async fetch(request, env, ctx) {
-    try {
-      const { text } = await request.json();
-      console.log("Got text:", text);
+  async fetch(request, env) {
+    console.log("📦 Embed worker received a request");
 
-      // Call the model by name
-      const embedding = await env.AI.run("@cf/baai/bge-base-en-v1.5", { text });
-      console.log("Got embedding:", embedding);
 
-      return new Response(JSON.stringify({ embedding: embedding.data }), {
-  headers: { "Content-Type": "application/json" }
-});
-
-    } catch (err) {
-      console.error("Worker error:", err);
-      return new Response("Internal error", { status: 500 });
+    if (request.method !== "POST") {
+      return new Response("Only POST requests allowed", { status: 405 });
     }
-  }
-};
 
+    const { text } = await request.json();
+    if (!text) {
+      return new Response("Missing 'text' in request body", { status: 400 });
+    }
+
+    try {
+      const result = await env.AI.run("@cf/baai/bge-base-en-v1.5", { text });
+      return Response.json({ embedding: result.data });
+    } catch (err) {
+      return new Response("Embedding failed", { status: 500 });
+    }
+  },
+};
