@@ -4,11 +4,13 @@ export default function HowItWorks() {
       <h2 className="text-xl font-bold">How this project works</h2>
       <p>This chatbot uses a Retrieval-Augmented Generation (RAG) architecture built entirely on Cloudflare (where I currently work):</p>
       <ul className="list-disc pl-5 space-y-1">
-        <li>✍️ I wrote 55 Q&A pairs about myself (from career to fun facts)</li>
-        <li>🧠 They're embedded using Workers AI and stored in Cloudflare Vectorize</li>
-        <li>💬 When you ask something, the backend Worker fetches the closest answers and sends them to the AI model</li>
+        <li> To start, I wrote 55 Q&A pairs about myself (from career, fun facts, my interest in this program)</li>
+        <li> Then, I created a Worker for embedding data (used a embeddings LLM via Cloudflare AI) and stored it in Cloudflare Vectorize</li>
+        <li> The Chat Interface fetches a Worker which sends the user input to my embedding Worker </li>
+        <li> The main Worker then takes the top 3 most similar Q&A pairs from the user input and uses them as a context prompt that it feeds into another LLM</li>
+        <li> The LLM output is returned in the Chat Interface </li>
       </ul>
-      <p>This project was built in a week — it's part application, part portfolio, part experiment. Hope you enjoy chatting with me!</p>
+      <p>Note: This project was built in a week — it's part application, part portfolio, part experiment. There are many things that I want to polish, but this is intended to be a MVP.  Hope you enjoy chatting with me!</p>
     </div>
   )
 }
