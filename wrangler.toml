@@ -5,7 +5,7 @@ compatibility_date = "2025-07-27"
 
 [[vectorize]]
 binding = "VECTORIZE"
-index_name = "julie-qna-index"
+index_name = "julie-qna-fast"
 
 [ai]
 binding = "LLM"

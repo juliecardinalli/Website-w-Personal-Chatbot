@@ -15,7 +15,7 @@ export default {
     }
 
     try {
-      const result = await env.AI.run("@cf/baai/bge-base-en-v1.5", { text });
+      const result = await env.AI.run("@cf/baai/bge-small-en-v1.5", { text });
       return Response.json({ embedding: result.data });
     } catch (err) {
       return new Response("Embedding failed", { status: 500 });
