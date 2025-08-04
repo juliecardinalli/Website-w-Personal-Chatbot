@@ -42,43 +42,51 @@ function ChatInterface() {
   }, [messages]);
 
   return (
-    <div className="border rounded-lg p-4 bg-gray-50">
-      <div className="h-80 overflow-y-auto mb-4 space-y-3">
+    <div className="bg-white border rounded-xl shadow-md p-6 space-y-4">
+      <h2 className="text-2xl font-bold text-blue-600 text-center">Chat with Julie</h2>
+
+      <div className="h-[22rem] overflow-y-auto space-y-3 px-2">
         {messages.map((msg, i) => (
-          <div key={i} className={msg.sender === "user" ? "text-right" : "text-left"}>
-            <div className={msg.sender === "user" ? "bg-blue-200 inline-block px-3 py-2 rounded" : "bg-gray-200 inline-block px-3 py-2 rounded"}>
-              <p className="text-sm">{msg.text}</p>
+          <div key={i} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
+            <div
+              className={`px-4 py-2 rounded-lg max-w-xs text-sm ${
+                msg.sender === "user"
+                  ? "bg-blue-600 text-white rounded-br-none"
+                  : "bg-gray-200 text-gray-900 rounded-bl-none"
+              }`}
+            >
+              {msg.text}
             </div>
           </div>
         ))}
-        {loading && <div className="text-sm italic text-gray-500">Julie is thinking...</div>}
+        {loading && (
+          <div className="text-sm italic text-gray-500">Julie is thinking...</div>
+        )}
         <div ref={messagesEndRef} />
       </div>
 
-      <textarea
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        onKeyDown={handleKeyDown}
-        rows={2}
-        placeholder="Ask me anything..."
-        className="w-full p-2 border rounded mb-2"
-      />
-      <button
-        onClick={sendMessage}
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full"
-        disabled={loading}
-      >
-        {loading ? "Sending..." : "Send"}
-      </button>
+      <div className="flex flex-col space-y-2">
+        <textarea
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleKeyDown}
+          rows={2}
+          className="w-full border rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-400"
+          placeholder="Ask me anything..."
+        />
+        <button
+          onClick={sendMessage}
+          className="w-full bg-blue-600 text-white font-medium py-2 rounded-md hover:bg-blue-700 transition"
+          disabled={loading}
+        >
+          {loading ? "Sending..." : "Send"}
+        </button>
+      </div>
     </div>
   );
 }
 
 export default ChatInterface;
-
-
-
-
 
 
 
