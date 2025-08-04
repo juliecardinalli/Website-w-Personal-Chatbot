@@ -41,7 +41,7 @@ export default {
     }
 
     const searchRes = await env.VECTORIZE.query(queryEmbedding, {
-      topK: 3,
+      topK: 2,
       returnMetadata: true,
     });
 
@@ -51,9 +51,9 @@ export default {
 
     const finalPrompt = `${env.SYSTEM_PROMPT}\n\nRelevant Q&A examples:\n${relevantPairs}\n\nUser: ${prompt}`;
 
-    const aiResponse = await env.LLM.run("@cf/openchat/openchat-3.5-0106", {
+    const aiResponse = await env.LLM.run("@cf/meta/llama-3-8b-instruct", {
       messages: [{ role: "user", content: finalPrompt }],
-      max_tokens: 1024,
+      max_tokens: 512,
     });
 
     return new Response(JSON.stringify({ answer: aiResponse.response }), {
