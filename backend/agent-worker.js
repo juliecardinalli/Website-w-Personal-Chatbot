@@ -51,7 +51,7 @@ export default {
 
     const finalPrompt = `${env.SYSTEM_PROMPT}\n\nRelevant Q&A examples:\n${relevantPairs}\n\nUser: ${prompt}`;
 
-    const aiResponse = await env.LLM.run("@cf/meta/llama-3-8b-instruct", {
+    const aiResponse = await env.LLM.run("@cf/openchat/openchat-3.5-0106", {
       messages: [{ role: "user", content: finalPrompt }],
       max_tokens: 1024,
     });
