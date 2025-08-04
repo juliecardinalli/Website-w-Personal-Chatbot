@@ -43,25 +43,23 @@ function ChatInterface() {
   }, [messages, loading]);
 
   return (
-    <div className="flex flex-col max-w-3xl mx-auto mt-10 bg-white shadow-2xl rounded-3xl p-8 border border-gray-200">
-      <h1 className="text-4xl font-bold text-center text-blue-700 mb-6 tracking-tight">
-        Ask Julie Anything 💬
-      </h1>
+    <div className="w-full max-w-2xl bg-white/70 backdrop-blur-lg shadow-xl border border-gray-200 rounded-3xl p-6 flex flex-col h-[85vh]">
+      <h1 className="text-3xl font-bold text-center text-blue-700 mb-4">Chat with Julie 🤖</h1>
 
-      <div className="flex flex-col gap-4 overflow-y-auto h-[30rem] px-4">
+      <div className="flex-1 overflow-y-auto px-2 space-y-4 mb-4">
         {messages.map((msg, i) => (
           <div key={i} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
             <div
-              className={`max-w-md px-5 py-3 rounded-2xl text-sm leading-relaxed transition-all duration-300 shadow-md ${
+              className={`max-w-sm px-5 py-3 rounded-xl shadow-sm text-sm transition-all duration-300 whitespace-pre-wrap ${
                 msg.sender === "user"
                   ? "bg-blue-600 text-white rounded-br-none"
-                  : "bg-gray-100 text-gray-900 rounded-bl-none"
+                  : "bg-white text-gray-800 border border-gray-200 rounded-bl-none"
               }`}
             >
-              <p className="text-xs font-semibold mb-1 text-gray-300 uppercase tracking-wide">
+              <span className="block text-xs font-medium mb-1 text-gray-400 uppercase">
                 {msg.sender === "user" ? "You" : "Julie"}
-              </p>
-              <p className="whitespace-pre-wrap">{msg.text}</p>
+              </span>
+              {msg.text}
             </div>
           </div>
         ))}
@@ -71,19 +69,19 @@ function ChatInterface() {
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="flex items-center mt-6 gap-3">
+      <div className="flex items-end gap-2">
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyPress}
           rows={2}
-          className="flex-1 border border-gray-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none shadow-sm"
-          placeholder="Type your question..."
+          className="flex-1 border border-gray-300 rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none shadow-sm bg-white"
+          placeholder="Ask me anything..."
         />
         <button
           onClick={sendMessage}
           disabled={loading}
-          className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-5 py-2 rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed"
+          className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-5 py-2 rounded-xl transition disabled:opacity-50"
         >
           {loading ? "..." : "Send"}
         </button>
@@ -93,6 +91,7 @@ function ChatInterface() {
 }
 
 export default ChatInterface;
+
 
 
 
