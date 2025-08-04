@@ -6,56 +6,22 @@ import HowItWorks from "./pages/HowItWorks";
 function App() {
   const [tab, setTab] = useState("chat");
 
-  const renderTab = () => {
-    switch (tab) {
-      case "chat":
-        return <ChatInterface />;
-      case "how":
-        return <HowItWorks />;
-      case "about":
-        return <About />;
-      default:
-        return null;
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-pink-50 text-gray-800 font-sans">
-      <div className="flex flex-col items-center justify-start min-h-screen p-6 max-w-4xl mx-auto">
-      <div className="bg-green-400 text-white p-4 mb-4 rounded-lg shadow">
-        ✅ Tailwind is working if you see this green box!
-      </div>
-        <nav className="flex gap-4 mb-6 mt-4 bg-white/70 backdrop-blur-lg px-6 py-2 rounded-full shadow border border-gray-200">
-          <button
-            onClick={() => setTab("chat")}
-            className={`px-4 py-1 rounded-full text-sm font-medium transition ${
-              tab === "chat" ? "bg-blue-600 text-white shadow" : "text-gray-700 hover:bg-gray-100"
-            }`}
-          >
-            Chat
-          </button>
-          <button
-            onClick={() => setTab("how")}
-            className={`px-4 py-1 rounded-full text-sm font-medium transition ${
-              tab === "how" ? "bg-blue-600 text-white shadow" : "text-gray-700 hover:bg-gray-100"
-            }`}
-          >
-            How it Works
-          </button>
-          <button
-            onClick={() => setTab("about")}
-            className={`px-4 py-1 rounded-full text-sm font-medium transition ${
-              tab === "about" ? "bg-blue-600 text-white shadow" : "text-gray-700 hover:bg-gray-100"
-            }`}
-          >
-            About Me
-          </button>
-        </nav>
+    <div className="min-h-screen bg-white text-gray-900 p-6 font-sans">
+      <nav className="flex justify-center space-x-4 mb-6">
+        <button onClick={() => setTab("chat")} className={tab === "chat" ? "font-bold text-blue-600" : ""}>Chat</button>
+        <button onClick={() => setTab("how")} className={tab === "how" ? "font-bold text-blue-600" : ""}>How it Works</button>
+        <button onClick={() => setTab("about")} className={tab === "about" ? "font-bold text-blue-600" : ""}>About Me</button>
+      </nav>
 
-        <div className="w-full">{renderTab()}</div>
-      </div>
+      <main className="max-w-2xl mx-auto">
+        {tab === "chat" && <ChatInterface />}
+        {tab === "how" && <HowItWorks />}
+        {tab === "about" && <About />}
+      </main>
     </div>
   );
 }
 
 export default App;
+
