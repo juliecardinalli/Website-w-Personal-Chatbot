@@ -7,10 +7,10 @@ function ChatInterface() {
   const messagesEndRef = useRef(null);
 
   const sendMessage = async () => {
-    if (!input.trim() || loading) return;
+    const userInput = input.trim();
+    if (!userInput || loading) return;
 
-    const userInput = input;
-    setMessages([...messages, { sender: "user", text: userInput }]);
+    setMessages((prev) => [...prev, { sender: "user", text: userInput }]);
     setInput("");
     setLoading(true);
 
@@ -24,13 +24,14 @@ function ChatInterface() {
       const data = await res.json();
       setMessages((prev) => [...prev, { sender: "bot", text: data.answer }]);
     } catch (err) {
-      setMessages((prev) => [...prev, { sender: "bot", text: "Something went wrong." }]);
+      console.error("Chat error:", err);
+      setMessages((prev) => [...prev, { sender: "bot", text: "Something went wrong. Please try again." }]);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyPress = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       sendMessage();
@@ -39,47 +40,50 @@ function ChatInterface() {
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, loading]);
 
   return (
-    <div className="bg-white border rounded-xl shadow-md p-6 space-y-4">
-      <h2 className="text-2xl font-bold text-blue-600 text-center">Chat with Julie</h2>
+    <div className="flex flex-col max-w-2xl mx-auto mt-10 bg-white shadow-lg rounded-lg p-6 border">
+      <h1 className="text-3xl font-semibold text-center text-blue-700 mb-6">Chat with Julie ✨</h1>
 
-      <div className="h-[22rem] overflow-y-auto space-y-3 px-2">
+      <div className="flex flex-col space-y-4 overflow-y-auto h-[28rem] px-2">
         {messages.map((msg, i) => (
           <div key={i} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
             <div
-              className={`px-4 py-2 rounded-lg max-w-xs text-sm ${
+              className={`max-w-xs px-4 py-3 rounded-2xl text-sm leading-relaxed shadow ${
                 msg.sender === "user"
-                  ? "bg-blue-600 text-white rounded-br-none"
-                  : "bg-gray-200 text-gray-900 rounded-bl-none"
+                  ? "bg-blue-500 text-white rounded-br-none"
+                  : "bg-pink-100 text-gray-800 rounded-bl-none"
               }`}
             >
-              {msg.text}
+              <strong className="block mb-1 text-xs uppercase tracking-wide">
+                {msg.sender === "user" ? "You" : "Julie"}
+              </strong>
+              <p className="whitespace-pre-wrap">{msg.text}</p>
             </div>
           </div>
         ))}
         {loading && (
-          <div className="text-sm italic text-gray-500">Julie is thinking...</div>
+          <div className="text-sm text-gray-500 italic animate-pulse">Julie is thinking...</div>
         )}
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="flex flex-col space-y-2">
+      <div className="flex items-center mt-6 space-x-2">
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
+          onKeyDown={handleKeyPress}
           rows={2}
-          className="w-full border rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-400"
+          className="flex-1 border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300 resize-none"
           placeholder="Ask me anything..."
         />
         <button
           onClick={sendMessage}
-          className="w-full bg-blue-600 text-white font-medium py-2 rounded-md hover:bg-blue-700 transition"
           disabled={loading}
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-md disabled:opacity-50"
         >
-          {loading ? "Sending..." : "Send"}
+          Send
         </button>
       </div>
     </div>
