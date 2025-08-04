@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,jsx}",
+    "./index.html", // only if you have one
+    "./src/**/*.{js,ts,jsx,tsx}", // Tailwind will scan *all* components
   ],
   theme: {
     extend: {},

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import './index.css'; 
 import ChatInterface from "./components/ChatInterface";
 import About from "./pages/About";
 import HowItWorks from "./pages/HowItWorks";
@@ -23,6 +22,9 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-pink-50 text-gray-800 font-sans">
       <div className="flex flex-col items-center justify-start min-h-screen p-6 max-w-4xl mx-auto">
+      <div className="bg-green-400 text-white p-4 mb-4 rounded-lg shadow">
+        ✅ Tailwind is working if you see this green box!
+      </div>
         <nav className="flex gap-4 mb-6 mt-4 bg-white/70 backdrop-blur-lg px-6 py-2 rounded-full shadow border border-gray-200">
           <button
             onClick={() => setTab("chat")}
@@ -57,4 +59,3 @@ function App() {
 }
 
 export default App;
-
