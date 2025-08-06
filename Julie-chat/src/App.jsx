@@ -1,27 +1,35 @@
 import { useState } from "react";
-import ChatInterface from "./components/ChatInterface";
-import About from "./pages/About";
-import HowItWorks from "./pages/HowItWorks";
+import Chat from "./components/Chat";
+import About from "./components/About";
+import HowItWorks from "./components/HowItWorks";
 
 function App() {
-  const [tab, setTab] = useState("chat");
+  const [activeTab, setActiveTab] = useState("chat");
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 p-6 font-sans">
-      <nav className="flex justify-center space-x-4 mb-6">
-        <button onClick={() => setTab("chat")} className={tab === "chat" ? "font-bold text-blue-600" : ""}>Chat</button>
-        <button onClick={() => setTab("how")} className={tab === "how" ? "font-bold text-blue-600" : ""}>How it Works</button>
-        <button onClick={() => setTab("about")} className={tab === "about" ? "font-bold text-blue-600" : ""}>About Me</button>
+    <div>
+      <nav className="nav-bar">
+        <button className={activeTab === "chat" ? "active" : ""} onClick={() => setActiveTab("chat")}>
+          Chat
+        </button>
+        <button className={activeTab === "about" ? "active" : ""} onClick={() => setActiveTab("about")}>
+          About Me
+        </button>
+        <button className={activeTab === "how" ? "active" : ""} onClick={() => setActiveTab("how")}>
+          How This Was Made
+        </button>
       </nav>
 
-      <main className="max-w-2xl mx-auto">
-        {tab === "chat" && <ChatInterface />}
-        {tab === "how" && <HowItWorks />}
-        {tab === "about" && <About />}
-      </main>
+      <div className="tab-content">
+        {activeTab === "chat" && <Chat />}
+        {activeTab === "about" && <About />}
+        {activeTab === "how" && <HowItWorks />}
+      </div>
     </div>
   );
 }
 
 export default App;
+
+
 

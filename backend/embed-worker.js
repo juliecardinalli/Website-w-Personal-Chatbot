@@ -2,7 +2,6 @@
 
 export default {
   async fetch(request, env) {
-    console.log("📦 Embed worker received a request");
 
 
     if (request.method !== "POST") {
