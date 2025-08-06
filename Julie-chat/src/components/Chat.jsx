@@ -34,6 +34,9 @@ export default function Chat() {
   return (
     <div className="chat-container">
       <div className="chat-header">Chat with Julie</div>
+      <p style={{ fontSize: "0.85rem", color: "#666", marginTop: "-0.5rem", marginBottom: "1rem" }}>
+        ⚠️ This model may have issues on VPNs or managed devices. If you get errors, try disconnecting or using a personal device.
+      </p>
 
       <div className="chat-box" style={{ display: "flex", flexDirection: "column" }}>
         {messages.map((msg, idx) => (
