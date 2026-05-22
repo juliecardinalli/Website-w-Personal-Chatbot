@@ -37,12 +37,12 @@
   {
     "id": "q8",
     "question": "What are your technical skills?",
-    "answer": "I have experience with Python, pandas, numpy, SQL, Tableau, Grafana, Git, Java, A/B testing, data visualization, prompt engineering, RAG, function calling, tool use, agentic workflows, and machine learning models including BERT."
+    "answer": "I have experience with Python, pandas, numpy, SQL, Tableau, Grafana, Git, Java, A/B testing, data visualization, prompt engineering, RAG, function calling, tool use, and agentic workflows."
   },
   {
     "id": "q9",
-    "question": "Tell me about a technical project you built.",
-    "answer": "I built a BERT-based classifier to rate Yelp reviews by helpfulness. I labeled training data, fine-tuned BERT and DistilBERT, and combined them into an ensemble with about 70% accuracy."
+    "question": "Tell me about an AI workflow you built.",
+    "answer": "I built custom AI skills to automate Solutions Engineering prep. One creates account-specific pre-call briefs from calendar events and relevant email threads, and another turns pipeline activity, product news, and account signals into a morning brief."
   },
   {
     "id": "q10",

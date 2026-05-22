@@ -2,14 +2,18 @@ import {
   Award,
   Brain,
   BriefcaseBusiness,
-  Cloud,
+  Camera,
   Code2,
+  ExternalLink,
   GraduationCap,
+  Heart,
   MapPin,
   MessageCircle,
   Sparkles,
   Trophy,
 } from "lucide-react";
+import julieCow from "./assets/julie-cow.jpg";
+import juliePresidentsClub from "./assets/julie-presidents-club.jpg";
 import Chat from "./components/Chat";
 
 const highlights = [
@@ -53,7 +57,6 @@ const achievementCards = [
 const projects = [
   "Built this personal AI chatbot with Cloudflare Workers AI, Vectorize, and a RAG flow.",
   "Created custom AI skills for account prep, including pre-call briefs and morning pipeline summaries.",
-  "Created a BERT and DistilBERT classifier for Yelp review helpfulness with about 70% accuracy.",
   "Delivered a 25-minute FutureCon SLC talk on developing a Zero Trust mindset.",
   "Drove a vendor POC and beta launch of a client-facing software portal at Applied Materials.",
 ];
@@ -68,6 +71,24 @@ const personality = [
   "Runner and skier",
 ];
 
+const socials = [
+  {
+    label: "TikTok",
+    handle: "@juliemeow69",
+    href: "https://www.tiktok.com/@juliemeow69",
+  },
+  {
+    label: "LinkedIn",
+    handle: "@juliecardinalli",
+    href: "https://www.linkedin.com/in/juliecardinalli/",
+  },
+  {
+    label: "X",
+    handle: "@softlaunchjulie",
+    href: "https://x.com/softlaunchjulie",
+  },
+];
+
 function App() {
   return (
     <main className="site-shell">
@@ -79,7 +100,7 @@ function App() {
           <a href="#work">Work</a>
           <a href="#projects">Projects</a>
           <a href="#personality">Life</a>
-          <a href="#chat">Chat</a>
+          <a href="#socials">Socials</a>
         </nav>
       </header>
 
@@ -92,8 +113,8 @@ function App() {
           <h1>Julie Cardinalli</h1>
           <p className="hero-lede">
             Cloudflare Solutions Engineer, President's Club honoree, and UC Berkeley Data Science grad
-            who turns complex technology into crisp stories, trusted customer moments, and useful AI-powered
-            systems.
+            who turns complex technology into crisp stories, useful AI-powered systems, and occasionally
+            TikToks that make business news feel less like homework.
           </p>
           <div className="hero-actions">
             <a className="primary-action" href="#chat">
@@ -106,21 +127,8 @@ function App() {
           </div>
         </div>
 
-        <div className="hero-visual" aria-label="Julie profile highlights">
-          <div className="portrait-card">
-            <div className="portrait-badge">
-              <Cloud size={24} aria-hidden="true" />
-            </div>
-            <div className="portrait-initials">JC</div>
-            <div className="portrait-caption">
-              <span>President's Club</span>
-              <span>Berkeley Data Science</span>
-              <span>AI + value selling</span>
-            </div>
-          </div>
-          <div className="floating-note note-one">curious</div>
-          <div className="floating-note note-two">clear</div>
-          <div className="floating-note note-three">fun</div>
+        <div className="hero-chat" id="chat">
+          <Chat />
         </div>
       </section>
 
@@ -133,14 +141,27 @@ function App() {
         ))}
       </section>
 
-      <section className="content-band" id="work">
-        <div className="section-heading">
-          <span className="eyebrow">
-            <Trophy size={16} aria-hidden="true" />
-            Professional Sparkle
-          </span>
-          <h2>Technical enough to go deep, human enough to make it make sense.</h2>
+      <section className="feature-band" id="work">
+        <div className="feature-photo">
+          <img src={juliePresidentsClub} alt="Julie at Cloudflare President's Club winners wall" />
+          <span>President's Club, but make it orange.</span>
         </div>
+        <div className="feature-copy">
+          <div className="section-heading">
+            <span className="eyebrow">
+              <Trophy size={16} aria-hidden="true" />
+              Professional Sparkle
+            </span>
+            <h2>Technical enough to go deep, human enough to make it make sense.</h2>
+          </div>
+          <p>
+            The work version of Julie is still very Julie: curious, direct, a little extra, and obsessed
+            with turning complicated systems into stories customers can trust.
+          </p>
+        </div>
+      </section>
+
+      <section className="content-band">
         <div className="achievement-grid">
           {achievementCards.map(({ icon: Icon, title, text }) => (
             <article className="achievement-card" key={title}>
@@ -178,7 +199,7 @@ function App() {
             <MapPin size={16} aria-hidden="true" />
             Beyond the Resume
           </span>
-          <h2>A little polished, a little playful, very much herself.</h2>
+          <h2>A little polished, a little unhinged, very much herself.</h2>
         </div>
         <div className="personality-grid">
           {personality.map((item) => (
@@ -187,20 +208,34 @@ function App() {
         </div>
       </section>
 
-      <section className="chat-band" id="chat">
-        <div className="chat-intro">
+      <section className="social-band" id="socials">
+        <div className="social-copy">
           <span className="eyebrow">
-            <MessageCircle size={16} aria-hidden="true" />
-            Ask Julie Anything
+            <Camera size={16} aria-hidden="true" />
+            Internet Julie
           </span>
-          <h2>Meet the chatbot version of Julie.</h2>
+          <h2>Content creation, soft launches, and occasional cow content.</h2>
           <p>
-            It answers in Julie's voice using the personal and professional knowledge base behind this
-            site. Ask about Cloudflare, Berkeley, AI, projects, hobbies, or how she thinks through hard
-            problems.
+            Julie makes mid-length videos that translate business, technology, and current events for
+            general audiences. The vibe is smart, conversational, and a little bit sparkly.
           </p>
+          <div className="social-links">
+            {socials.map((social) => (
+              <a href={social.href} key={social.label} target="_blank" rel="noreferrer">
+                <span>{social.label}</span>
+                <strong>{social.handle}</strong>
+                <ExternalLink size={16} aria-hidden="true" />
+              </a>
+            ))}
+          </div>
         </div>
-        <Chat />
+        <div className="life-photo">
+          <img src={julieCow} alt="Julie smiling with a fluffy cow" />
+          <div>
+            <Heart size={18} aria-hidden="true" />
+            <span>Not every high-performing website needs a cow photo, but this one absolutely does.</span>
+          </div>
+        </div>
       </section>
     </main>
   );
