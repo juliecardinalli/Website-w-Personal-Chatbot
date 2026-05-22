@@ -1,5 +1,5 @@
 {
-  "name": "julieperplexity-agent",
+  "name": "julie-personal-site",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -17,19 +17,19 @@
     "build": "next build",
     "start": "next start"
   },
-  "description": "✨ *Exploring AI, product, and people. Ask me anything about my story and why Perplexity APM program.*",
+  "description": "Personal website and AI chatbot for Julie Cardinalli.",
   "main": "convert-to-ndjson.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/juliecardinalli/julieperplexity-agent.git"
+    "url": "git+https://github.com/juliecardinalli/julie-personal-site.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/juliecardinalli/julieperplexity-agent/issues"
+    "url": "https://github.com/juliecardinalli/julie-personal-site/issues"
   },
-  "homepage": "https://github.com/juliecardinalli/julieperplexity-agent#readme",
+  "homepage": "https://github.com/juliecardinalli/julie-personal-site#readme",
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
