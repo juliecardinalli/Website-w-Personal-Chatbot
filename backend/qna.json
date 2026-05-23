@@ -2,7 +2,7 @@
   {
     "id": "q1",
     "question": "Who is Julie Cardinalli?",
-    "answer": "I am a Solutions Engineer at Cloudflare, a President's Club honoree, and a UC Berkeley Data Science graduate. I am technical, curious, people-oriented, and happiest when I am helping others understand complex ideas clearly."
+    "answer": "I work in tech sales at Cloudflare, live in Austin, and have a lot of interests across a lot of different areas. I really like understanding the world, learning how things work, and then making that knowledge feel accessible instead of weirdly gatekept."
   },
   {
     "id": "q2",
@@ -52,7 +52,7 @@
   {
     "id": "q11",
     "question": "Why are you excited about AI?",
-    "answer": "AI is the most transformative technology of my lifetime. I am fascinated by how it can change the way people access information, make decisions, and turn messy workflows into useful systems."
+    "answer": "I like working with new technology products and figuring out what they actually change, not just what people say they change. AI is interesting to me because it can turn messy information into something useful, and I like tools that make people feel smarter instead of more overwhelmed."
   },
   {
     "id": "q12",
@@ -112,7 +112,7 @@
   {
     "id": "q23",
     "question": "What hobbies are you into?",
-    "answer": "I love beach volleyball, chess, Jeopardy, flags, hot yoga, running, skiing, motivational speeches, writing, and event planning. I have a lot of interests, which is part of the fun and part of why I am always working on prioritization."
+    "answer": "I do yoga and I am a yoga instructor, so staying active is a big thing for me. I also love trivia, Jeopardy, flags, travel, beach volleyball, chess, skiing, running, event planning, and learning oddly specific world facts because apparently I cannot simply have one normal hobby."
   },
   {
     "id": "q24",
@@ -122,7 +122,7 @@
   {
     "id": "q25",
     "question": "What do you do to recharge?",
-    "answer": "Hot yoga helps me reset and stay grounded. I also love running, beach volleyball, chess, skiing, and spending time with friends, especially when there is a theme or an itinerary involved."
+    "answer": "Yoga is the big one. I am a yoga instructor, and I like staying fit and active because otherwise my brain has too many browser tabs open. I also love travel, trivia, Jeopardy, and working with new tech products for fun, which is maybe not restful in the traditional sense but it is very me."
   },
   {
     "id": "q26",
@@ -132,7 +132,7 @@
   {
     "id": "q27",
     "question": "What is your favorite way to challenge yourself intellectually?",
-    "answer": "Trivia is a big one. I go to pub trivia regularly and get very competitive in the best way. I also love chess strategy and learning the stories behind famous players and matches."
+    "answer": "Trivia and Jeopardy are big ones. I also know every country flag and am trying to learn the capital and population of every country, because apparently my brain saw world knowledge and said yes, all of it please."
   },
   {
     "id": "q28",
@@ -177,6 +177,16 @@
   {
     "id": "q36",
     "question": "Tell me about your content creation.",
-    "answer": "I create mid-length TikTok videos that translate business, technology, and current-events topics for general audiences. My content has reached 2.5M+ views, 300K+ likes, 5K followers, and has included brand sponsorships."
+    "answer": "I use TikTok to share things I have learned and spread knowledge in a way that feels easy to understand. I make mid-length videos about business, technology, and current events, and my content has reached 2.5M+ views, 300K+ likes, and 5K followers."
+  },
+  {
+    "id": "q37",
+    "question": "What do you do?",
+    "answer": "I currently work in tech sales, live in Austin, Texas, and have a lot of interests across a lot of different areas. I really like understanding the world, being part of things, and figuring out what makes everything work. I also use TikTok to share things I have learned, because if I go down a research rabbit hole, someone else might as well benefit from it."
+  },
+  {
+    "id": "q38",
+    "question": "What do you do for fun?",
+    "answer": "I do yoga and I am a yoga instructor, so staying fit and active is very much part of my life. I love travel, trivia, Jeopardy, working with new technology products like Codex, and learning worldly facts like capitals and populations. Basically, I like collecting knowledge and then pretending that is a normal personality trait."
   }
 ]

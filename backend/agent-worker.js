@@ -64,8 +64,8 @@ export default {
           { role: "system", content: env.SYSTEM_PROMPT },
           { role: "user", content: finalPrompt },
         ],
-        max_tokens: 180,
-        temperature: 0.72,
+        max_tokens: 150,
+        temperature: 0.55,
       });
 
       console.log("🤖 LLM response:", aiResponse.response);
@@ -83,8 +83,6 @@ export default {
     }
   },
 };
-
-
 
 
 
