@@ -55,13 +55,17 @@ export default {
         .map((m) => `Q: ${m.metadata.question}\nA: ${m.metadata.answer}`)
         .join("\n\n");
 
-      const finalPrompt = `${env.SYSTEM_PROMPT}\n\nRelevant Q&A examples:\n${context}\n\nUser: ${prompt}`;
+      const finalPrompt = `Relevant Q&A examples:\n${context}\n\nUser: ${prompt}`;
       console.log("📝 Final prompt to LLM:", finalPrompt.slice(0, 200), "...");
 
       // Call LLM
       const aiResponse = await env.LLM.run("@cf/meta/llama-3.1-8b-instruct-fast", {
-        messages: [{ role: "user", content: finalPrompt }],
-        max_tokens: 512,
+        messages: [
+          { role: "system", content: env.SYSTEM_PROMPT },
+          { role: "user", content: finalPrompt },
+        ],
+        max_tokens: 180,
+        temperature: 0.72,
       });
 
       console.log("🤖 LLM response:", aiResponse.response);
@@ -79,7 +83,6 @@ export default {
     }
   },
 };
-
 
 
 

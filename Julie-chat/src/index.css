@@ -36,6 +36,36 @@ body {
     linear-gradient(135deg, #fff8fb 0%, #fff 45%, #fff5df 100%);
 }
 
+.cursor-sparkle {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  border-radius: 2px;
+  box-shadow: 0 0 16px currentColor;
+  transform: translate(-50%, -50%) rotate(45deg);
+  animation: sparkle-trail 720ms ease-out forwards;
+}
+
+.cursor-sparkle::after {
+  position: absolute;
+  inset: 35%;
+  border-radius: 50%;
+  background: #fff;
+  content: "";
+}
+
+@keyframes sparkle-trail {
+  0% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(0.55) rotate(45deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--sparkle-x)), calc(-50% + var(--sparkle-y))) scale(0) rotate(145deg);
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;

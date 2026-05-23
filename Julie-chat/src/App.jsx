@@ -12,6 +12,7 @@ import {
   Sparkles,
   Trophy,
 } from "lucide-react";
+import { useEffect } from "react";
 import julieCow from "./assets/julie-cow.jpg";
 import juliePresidentsClub from "./assets/julie-presidents-club.jpg";
 import Chat from "./components/Chat";
@@ -90,6 +91,37 @@ const socials = [
 ];
 
 function App() {
+  useEffect(() => {
+    let lastSparkle = 0;
+    const colors = ["#ff4fa3", "#ff8abb", "#58d6b2", "#5667ff", "#ffd166"];
+
+    const createSparkle = (event) => {
+      const now = performance.now();
+      if (now - lastSparkle < 42) return;
+      lastSparkle = now;
+
+      const sparkle = document.createElement("span");
+      const size = Math.floor(Math.random() * 7) + 7;
+      const driftX = `${Math.random() * 34 - 17}px`;
+      const driftY = `${Math.random() * 28 - 22}px`;
+
+      sparkle.className = "cursor-sparkle";
+      sparkle.style.left = `${event.clientX}px`;
+      sparkle.style.top = `${event.clientY}px`;
+      sparkle.style.width = `${size}px`;
+      sparkle.style.height = `${size}px`;
+      sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      sparkle.style.setProperty("--sparkle-x", driftX);
+      sparkle.style.setProperty("--sparkle-y", driftY);
+
+      document.body.appendChild(sparkle);
+      window.setTimeout(() => sparkle.remove(), 720);
+    };
+
+    window.addEventListener("pointermove", createSparkle, { passive: true });
+    return () => window.removeEventListener("pointermove", createSparkle);
+  }, []);
+
   return (
     <main className="site-shell">
       <header className="top-nav" aria-label="Primary navigation">
