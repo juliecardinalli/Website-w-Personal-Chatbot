@@ -391,7 +391,8 @@ h3 {
 .split-band,
 .chat-band,
 .feature-band,
-.social-band {
+.social-band,
+.site-build-band {
   padding: 94px 0 0;
 }
 
@@ -508,6 +509,25 @@ h3 {
   border-radius: 50%;
   background: linear-gradient(135deg, var(--pink), var(--mint));
   content: "";
+}
+
+.site-build-band {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(320px, 1fr);
+  gap: 52px;
+  align-items: start;
+}
+
+.site-build-band p {
+  margin: 0;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 14px 42px rgba(82, 42, 65, 0.08);
+  color: var(--muted);
+  font-size: 1.12rem;
+  line-height: 1.65;
 }
 
 .life-band {
@@ -758,7 +778,8 @@ h3 {
   .split-band,
   .chat-band,
   .feature-band,
-  .social-band {
+  .social-band,
+  .site-build-band {
     grid-template-columns: 1fr;
   }
 
@@ -863,7 +884,8 @@ h3 {
   .split-band,
   .chat-band,
   .feature-band,
-  .social-band {
+  .social-band,
+  .site-build-band {
     padding-top: 66px;
   }
 

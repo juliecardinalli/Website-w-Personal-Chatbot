@@ -129,7 +129,7 @@ function App() {
         <nav className="nav-links">
           <a href="#work">Work</a>
           <a href="#socials">Socials</a>
-          <a href="#projects">Projects</a>
+          <a href="#site">Site</a>
           <a href="#personality">Life</a>
         </nav>
       </header>
@@ -251,6 +251,22 @@ function App() {
             <li key={project}>{project}</li>
           ))}
         </ul>
+      </section>
+
+      <section className="site-build-band" id="site">
+        <div>
+          <span className="eyebrow">
+            <Code2 size={16} aria-hidden="true" />
+            About This Site
+          </span>
+          <h2>Built like a tiny personal AI lab, hosted on Cloudflare.</h2>
+        </div>
+        <p>
+          This site is a React/Vite app hosted on Cloudflare Pages. The chat runs through a Cloudflare
+          Worker, uses Workers AI for generation, searches Julie-specific Q&A context in Cloudflare
+          Vectorize, and calls a small embedding Worker so the bot can answer in a way that feels more
+          like Julie and less like a customer-support toaster.
+        </p>
       </section>
 
       <section className="content-band life-band" id="personality">
