@@ -62,13 +62,12 @@ const projects = [
 ];
 
 const personality = [
-  "Knows every country flag",
-  "Jeopardy! enthusiast",
-  "Chess and strategy nerd",
-  "Hot yoga reset button",
-  "Beach volleyball player",
-  "Event-planning brain",
-  "Runner and skier",
+  "Every country flag",
+  "Jeopardy! person",
+  "Chess brain",
+  "200-hour yoga certified",
+  "Beach volleyball",
+  "Event planner",
 ];
 
 const socials = [

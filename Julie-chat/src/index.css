@@ -522,15 +522,17 @@ h3 {
 
 .personality-grid span {
   display: grid;
-  min-height: 108px;
+  min-height: 78px;
   place-items: center;
-  padding: 16px;
+  padding: 14px 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.76);
   color: #703254;
+  font-size: 0.95rem;
   font-weight: 900;
   text-align: center;
+  white-space: nowrap;
 }
 
 .social-band {
