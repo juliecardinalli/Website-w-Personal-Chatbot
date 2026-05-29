@@ -440,10 +440,6 @@ h3 {
   backdrop-filter: blur(12px);
 }
 
-.feature-copy p {
-  margin-bottom: 0;
-}
-
 .video-band {
   display: grid;
   grid-template-columns: minmax(0, 0.72fr) minmax(360px, 1fr);
@@ -477,6 +473,35 @@ h3 {
   width: 100%;
   aspect-ratio: 16 / 9;
   border: 0;
+}
+
+.accomplishment-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.accomplishment-list li {
+  position: relative;
+  padding: 15px 18px 15px 46px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.76);
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.accomplishment-list li::before {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink), var(--mint));
+  content: "";
 }
 
 .section-heading {

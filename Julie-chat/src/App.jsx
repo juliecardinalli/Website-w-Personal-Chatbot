@@ -1,10 +1,7 @@
 import {
-  Award,
-  Brain,
   Camera,
   Code2,
   ExternalLink,
-  GraduationCap,
   Heart,
   MapPin,
   MessageCircle,
@@ -32,34 +29,15 @@ const highlights = [
   },
 ];
 
-const achievementCards = [
-  {
-    icon: Award,
-    title: "Solutions Engineer at Cloudflare",
-    text: "Co-sells complex enterprise deals across Financial Services and Retail, building technical wins that connect product depth to business outcomes.",
-  },
-  {
-    icon: GraduationCap,
-    title: "UC Berkeley Data Science",
-    text: "Studied data science with economics and machine learning, building the analytical foundation behind her AI and product curiosity.",
-  },
-  {
-    icon: Trophy,
-    title: "President's Club + Value Selling",
-    text: "Earned Cloudflare President's Club while translating technical wins into business outcomes and ROI stories buyers can actually act on.",
-  },
-  {
-    icon: Brain,
-    title: "AI-Forward Operator",
-    text: "Builds agentic workflows and custom prep tools that turn meetings, email threads, and account signals into useful briefs.",
-  },
-];
-
-const projects = [
-  "Built this personal AI chatbot with Cloudflare Workers AI, Vectorize, and a RAG flow.",
-  "Created custom AI skills for account prep, including pre-call briefs and morning pipeline summaries.",
-  "Grew a TikTok audience by making business, technology, and current events easier to understand.",
-  "Delivered a 25-minute FutureCon SLC talk on developing a Zero Trust mindset.",
+const professionalAccomplishments = [
+  "Solutions Engineer at Cloudflare, co-selling complex enterprise deals across Financial Services and Retail.",
+  "Cloudflare President's Club honoree, recognized in the top 3% of the global sales organization.",
+  "Influenced $2M+ in cumulative ACV by connecting technical wins to business outcomes and ROI.",
+  "Delivered a 25-minute FutureCon Salt Lake City talk on developing a Zero Trust mindset.",
+  "Built custom AI workflows for account prep, including pre-call briefs and pipeline summaries.",
+  "Built this personal AI chatbot with Cloudflare Workers AI, Vectorize, and a retrieval-augmented flow.",
+  "UC Berkeley Data Science graduate with coursework across economics, machine learning, and applied analytics.",
+  "Grew a TikTok audience by translating business, technology, and current events for broad audiences.",
 ];
 
 const personality = [
@@ -208,20 +186,21 @@ function App() {
       <section className="feature-band" id="work">
         <div className="feature-photo">
           <img src={juliePresidentsClub} alt="Julie at Cloudflare President's Club winners wall" />
-          <span>President's Club, but make it orange.</span>
+          <span>Cloudflare President's Club honoree.</span>
         </div>
         <div className="feature-copy">
           <div className="section-heading">
             <span className="eyebrow">
               <Trophy size={16} aria-hidden="true" />
-              Professional Sparkle
+              Professional Accomplishments
             </span>
-            <h2>Technical enough to go deep, human enough to make it make sense.</h2>
+            <h2>Technical depth, clear storytelling, and measurable business impact.</h2>
           </div>
-          <p>
-            The work version of Julie is still very Julie: curious, direct, a little extra, and obsessed
-            with turning complicated systems into stories customers can trust.
-          </p>
+          <ul className="accomplishment-list">
+            {professionalAccomplishments.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -250,38 +229,6 @@ function App() {
             allowFullScreen
           />
         </div>
-      </section>
-
-      <section className="content-band">
-        <div className="achievement-grid">
-          {achievementCards.map(({ icon: Icon, title, text }) => (
-            <article className="achievement-card" key={title}>
-              <Icon size={24} aria-hidden="true" />
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="split-band" id="projects">
-        <div>
-          <span className="eyebrow">
-            <Code2 size={16} aria-hidden="true" />
-            Built, Shipped, Learned
-          </span>
-          <h2>Julie likes a project with a little texture.</h2>
-          <p>
-            Her work sits at the intersection of technical depth, practical execution, and a genuinely
-            curious point of view. The throughline is simple: learn fast, explain well, quantify value,
-            and build things that make people feel more capable.
-          </p>
-        </div>
-        <ul className="project-list">
-          {projects.map((project) => (
-            <li key={project}>{project}</li>
-          ))}
-        </ul>
       </section>
 
       <section className="site-build-band" id="site">
