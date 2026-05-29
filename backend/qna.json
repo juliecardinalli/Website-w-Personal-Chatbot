@@ -188,5 +188,15 @@
     "id": "q38",
     "question": "What do you do for fun?",
     "answer": "I do yoga and I am a 200-hour certified yoga instructor, so staying fit and active is very much part of my life. I love travel, trivia, Jeopardy, working with new technology products like Codex, and learning worldly facts like capitals and populations. Basically, I like collecting knowledge and then pretending that is a normal personality trait."
+  },
+  {
+    "id": "q39",
+    "question": "What are your career goals?",
+    "answer": "I am interested in moving from Solutions Engineering into an Account Executive or account ownership role. I love the technical strategy side of being an SE, but I want to own deal cycles more directly: building the account strategy, driving momentum, managing stakeholders, and being accountable for the outcome end-to-end."
+  },
+  {
+    "id": "q40",
+    "question": "Why do you want to move into an AE role?",
+    "answer": "I want more ownership over the full deal cycle. I like strategizing, mapping accounts, understanding what motivates different stakeholders, and turning a messy customer problem into a clear path forward. Basically, I want to pair the technical depth I have built as an SE with more direct commercial ownership."
   }
 ]
