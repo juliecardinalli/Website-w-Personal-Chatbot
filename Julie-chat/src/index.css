@@ -540,6 +540,10 @@ h3 {
   align-items: center;
 }
 
+.social-band-early {
+  padding-top: 34px;
+}
+
 .social-copy p {
   margin-bottom: 24px;
 }

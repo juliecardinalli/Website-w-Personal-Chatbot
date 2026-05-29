@@ -1,7 +1,6 @@
 import {
   Award,
   Brain,
-  BriefcaseBusiness,
   Camera,
   Code2,
   ExternalLink,
@@ -44,9 +43,9 @@ const achievementCards = [
     text: "Studied data science with economics and machine learning, building the analytical foundation behind her AI and product curiosity.",
   },
   {
-    icon: BriefcaseBusiness,
-    title: "Business Value Storyteller",
-    text: "Selected for Cloudflare's inaugural Business Value Associate cohort to deliver ROI assessments economic buyers can actually fund.",
+    icon: Trophy,
+    title: "President's Club + Value Selling",
+    text: "Earned Cloudflare President's Club while translating technical wins into business outcomes and ROI stories buyers can actually act on.",
   },
   {
     icon: Brain,
@@ -58,8 +57,8 @@ const achievementCards = [
 const projects = [
   "Built this personal AI chatbot with Cloudflare Workers AI, Vectorize, and a RAG flow.",
   "Created custom AI skills for account prep, including pre-call briefs and morning pipeline summaries.",
+  "Grew a TikTok audience by making business, technology, and current events easier to understand.",
   "Delivered a 25-minute FutureCon SLC talk on developing a Zero Trust mindset.",
-  "Drove a vendor POC and beta launch of a client-facing software portal at Applied Materials.",
 ];
 
 const personality = [
@@ -130,9 +129,9 @@ function App() {
         </a>
         <nav className="nav-links">
           <a href="#work">Work</a>
+          <a href="#socials">Socials</a>
           <a href="#projects">Projects</a>
           <a href="#personality">Life</a>
-          <a href="#socials">Socials</a>
         </nav>
       </header>
 
@@ -161,6 +160,36 @@ function App() {
 
         <div className="hero-chat" id="chat">
           <Chat />
+        </div>
+      </section>
+
+      <section className="social-band social-band-early" id="socials">
+        <div className="social-copy">
+          <span className="eyebrow">
+            <Camera size={16} aria-hidden="true" />
+            Internet Julie
+          </span>
+          <h2>Content creation, soft launches, and a lot of world curiosity.</h2>
+          <p>
+            Julie makes mid-length videos that translate business, technology, and current events for
+            general audiences. The vibe is smart, conversational, and just chaotic enough to be useful.
+          </p>
+          <div className="social-links">
+            {socials.map((social) => (
+              <a href={social.href} key={social.label} target="_blank" rel="noreferrer">
+                <span>{social.label}</span>
+                <strong>{social.handle}</strong>
+                <ExternalLink size={16} aria-hidden="true" />
+              </a>
+            ))}
+          </div>
+        </div>
+        <div className="life-photo">
+          <img src={julieCow} alt="Julie smiling with a fluffy cow" />
+          <div>
+            <Heart size={18} aria-hidden="true" />
+            <span>Not every high-performing website needs a cow photo, but this one absolutely does.</span>
+          </div>
         </div>
       </section>
 
@@ -240,35 +269,6 @@ function App() {
         </div>
       </section>
 
-      <section className="social-band" id="socials">
-        <div className="social-copy">
-          <span className="eyebrow">
-            <Camera size={16} aria-hidden="true" />
-            Internet Julie
-          </span>
-          <h2>Content creation, soft launches, and occasional cow content.</h2>
-          <p>
-            Julie makes mid-length videos that translate business, technology, and current events for
-            general audiences. The vibe is smart, conversational, and a little bit sparkly.
-          </p>
-          <div className="social-links">
-            {socials.map((social) => (
-              <a href={social.href} key={social.label} target="_blank" rel="noreferrer">
-                <span>{social.label}</span>
-                <strong>{social.handle}</strong>
-                <ExternalLink size={16} aria-hidden="true" />
-              </a>
-            ))}
-          </div>
-        </div>
-        <div className="life-photo">
-          <img src={julieCow} alt="Julie smiling with a fluffy cow" />
-          <div>
-            <Heart size={18} aria-hidden="true" />
-            <span>Not every high-performing website needs a cow photo, but this one absolutely does.</span>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }
