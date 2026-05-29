@@ -210,6 +210,7 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   min-height: 48px;
   padding: 0 20px;
   border-radius: 999px;
@@ -631,14 +632,20 @@ h3 {
   margin-bottom: 24px;
 }
 
+.contact-links {
+  display: grid;
+  gap: 12px;
+}
+
 .social-links {
   display: grid;
   gap: 10px;
 }
 
+.email-card,
 .social-links a {
   display: grid;
-  grid-template-columns: 82px 1fr 18px;
+  grid-template-columns: 82px minmax(0, 1fr) 18px;
   align-items: center;
   gap: 14px;
   min-height: 62px;
@@ -649,11 +656,18 @@ h3 {
   box-shadow: 0 12px 34px rgba(82, 42, 65, 0.08);
 }
 
+.email-card {
+  background: #241c23;
+  color: #fff;
+}
+
+.email-card:hover,
 .social-links a:hover {
   border-color: rgba(255, 79, 163, 0.38);
   transform: translateY(-1px);
 }
 
+.email-card span,
 .social-links span {
   color: #9a2f68;
   font-size: 0.78rem;
@@ -661,8 +675,15 @@ h3 {
   text-transform: uppercase;
 }
 
+.email-card span {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.email-card strong,
 .social-links strong {
+  min-width: 0;
   font-size: 1.05rem;
+  overflow-wrap: anywhere;
 }
 
 .life-photo img {
@@ -958,10 +979,12 @@ h3 {
     height: 440px;
   }
 
+  .email-card,
   .social-links a {
     grid-template-columns: 1fr 18px;
   }
 
+  .email-card span,
   .social-links span {
     grid-column: 1 / -1;
   }

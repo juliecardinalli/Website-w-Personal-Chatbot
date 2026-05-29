@@ -3,6 +3,7 @@ import {
   Code2,
   ExternalLink,
   Heart,
+  Mail,
   MapPin,
   MessageCircle,
   PlayCircle,
@@ -69,6 +70,8 @@ const socials = [
 
 const futureConUrl = "https://vimeo.com/1111253347/2dbaa3f485";
 const futureConEmbedUrl = "https://player.vimeo.com/video/1111253347?h=2dbaa3f485";
+const emailAddress = "juliecardinalli@gmail.com";
+const emailUrl = `mailto:${emailAddress}`;
 
 function App() {
   useEffect(() => {
@@ -110,9 +113,9 @@ function App() {
         </a>
         <nav className="nav-links">
           <a href="#work">Work</a>
-          <a href="#socials">Socials</a>
+          <a href="#futurecon">Speaking</a>
           <a href="#site">Site</a>
-          <a href="#personality">Life</a>
+          <a href="#contact">Contact</a>
         </nav>
       </header>
 
@@ -136,41 +139,15 @@ function App() {
             <a className="secondary-action" href="#work">
               See the proof
             </a>
+            <a className="secondary-action" href={emailUrl}>
+              <Mail size={18} aria-hidden="true" />
+              Contact
+            </a>
           </div>
         </div>
 
         <div className="hero-chat" id="chat">
           <Chat />
-        </div>
-      </section>
-
-      <section className="social-band social-band-early" id="socials">
-        <div className="social-copy">
-          <span className="eyebrow">
-            <Camera size={16} aria-hidden="true" />
-            Internet Julie
-          </span>
-          <h2>Content creation with a curious, practical point of view.</h2>
-          <p>
-            Julie makes mid-length videos that translate business, technology, and current events for
-            general audiences. The vibe is smart, conversational, and just chaotic enough to be useful.
-          </p>
-          <div className="social-links">
-            {socials.map((social) => (
-              <a href={social.href} key={social.label} target="_blank" rel="noreferrer">
-                <span>{social.label}</span>
-                <strong>{social.handle}</strong>
-                <ExternalLink size={16} aria-hidden="true" />
-              </a>
-            ))}
-          </div>
-        </div>
-        <div className="life-photo">
-          <img src={julieCow} alt="Julie smiling with a fluffy cow" />
-          <div>
-            <Heart size={18} aria-hidden="true" />
-            <span>Personal, approachable, and still very much built for the real internet.</span>
-          </div>
         </div>
       </section>
 
@@ -259,6 +236,44 @@ function App() {
           {personality.map((item) => (
             <span key={item}>{item}</span>
           ))}
+        </div>
+      </section>
+
+      <section className="social-band" id="contact">
+        <div className="social-copy">
+          <span className="eyebrow">
+            <Camera size={16} aria-hidden="true" />
+            Connect
+          </span>
+          <h2>Content, contact, and the places Julie shows up online.</h2>
+          <p>
+            Julie shares practical, conversational takes on business, technology, and current events.
+            For opportunities, speaking, collaborations, or a thoughtful hello, email is the cleanest
+            place to start.
+          </p>
+          <div className="contact-links">
+            <a className="email-card" href={emailUrl}>
+              <span>Email</span>
+              <strong>{emailAddress}</strong>
+              <Mail size={18} aria-hidden="true" />
+            </a>
+            <div className="social-links">
+              {socials.map((social) => (
+                <a href={social.href} key={social.label} target="_blank" rel="noreferrer">
+                  <span>{social.label}</span>
+                  <strong>{social.handle}</strong>
+                  <ExternalLink size={16} aria-hidden="true" />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="life-photo">
+          <img src={julieCow} alt="Julie smiling with a fluffy cow" />
+          <div>
+            <Heart size={18} aria-hidden="true" />
+            <span>Personal, approachable, and still very much built for the real internet.</span>
+          </div>
         </div>
       </section>
 
