@@ -168,7 +168,7 @@ function App() {
             <Camera size={16} aria-hidden="true" />
             Internet Julie
           </span>
-          <h2>Content creation, soft launches, and a lot of world curiosity.</h2>
+          <h2>Content creation with a curious, practical point of view.</h2>
           <p>
             Julie makes mid-length videos that translate business, technology, and current events for
             general audiences. The vibe is smart, conversational, and just chaotic enough to be useful.
@@ -187,7 +187,7 @@ function App() {
           <img src={julieCow} alt="Julie smiling with a fluffy cow" />
           <div>
             <Heart size={18} aria-hidden="true" />
-            <span>Not every high-performing website needs a cow photo, but this one absolutely does.</span>
+            <span>Personal, approachable, and still very much built for the real internet.</span>
           </div>
         </div>
       </section>
@@ -275,7 +275,7 @@ function App() {
             <MapPin size={16} aria-hidden="true" />
             Beyond the Resume
           </span>
-          <h2>A little polished, a little unhinged, very much herself.</h2>
+          <h2>Curious, well-rounded, and comfortable bringing personality to the room.</h2>
         </div>
         <div className="personality-grid">
           {personality.map((item) => (
