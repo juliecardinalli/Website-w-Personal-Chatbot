@@ -8,6 +8,7 @@ import {
   Heart,
   MapPin,
   MessageCircle,
+  PlayCircle,
   Sparkles,
   Trophy,
 } from "lucide-react";
@@ -87,6 +88,9 @@ const socials = [
     href: "https://x.com/softlaunchjulie",
   },
 ];
+
+const futureConUrl = "https://vimeo.com/1111253347/2dbaa3f485";
+const futureConEmbedUrl = "https://player.vimeo.com/video/1111253347?h=2dbaa3f485";
 
 function App() {
   useEffect(() => {
@@ -218,6 +222,33 @@ function App() {
             The work version of Julie is still very Julie: curious, direct, a little extra, and obsessed
             with turning complicated systems into stories customers can trust.
           </p>
+        </div>
+      </section>
+
+      <section className="video-band" id="futurecon">
+        <div className="video-copy">
+          <span className="eyebrow">
+            <PlayCircle size={16} aria-hidden="true" />
+            FutureCon SLC Speaker
+          </span>
+          <h2>Speaking on Zero Trust with a technical, practical point of view.</h2>
+          <p>
+            Julie presented at FutureCon Salt Lake City on developing a Zero Trust mindset, translating
+            security concepts into a clear framework for business and technical audiences.
+          </p>
+          <a className="secondary-action video-link" href={futureConUrl} target="_blank" rel="noreferrer">
+            Watch on Vimeo
+            <ExternalLink size={16} aria-hidden="true" />
+          </a>
+        </div>
+        <div className="video-frame">
+          <iframe
+            src={futureConEmbedUrl}
+            title="Julie Cardinalli speaking at FutureCon SLC"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
         </div>
       </section>
 
