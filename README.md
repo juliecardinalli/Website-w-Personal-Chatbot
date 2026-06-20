@@ -1,6 +1,6 @@
 # julieperplexity-agent
 
-✨ *Exploring AI, product, and people. Ask me anything about my story and why Perplexity APM program.*
+✨ *Exploring AI, product, and people. Ask me anything about my story and roles I am looking into.*
 
 Personal AI agent answering questions about Julie Cardinalli, built with:
 - Cloudflare Workers AI (Mistral 7B)
