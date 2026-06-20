@@ -13,23 +13,27 @@
     "undici": "^7.12.0"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "npm --prefix Julie-chat run dev",
+    "build": "npm --prefix Julie-chat run build",
+    "preview": "npm --prefix Julie-chat run preview",
+    "deploy:worker": "wrangler deploy --config wrangler.toml",
+    "deploy:embed-worker": "wrangler deploy --config embed-worker.toml",
+    "vectorize:embed": "node vectorize/embed.js",
+    "vectorize:upload": "node vectorize/upload.js"
   },
-  "description": "Personal website and AI chatbot for Julie Cardinalli.",
+  "description": "Personal portfolio website and AI chatbot for Julie Cardinalli.",
   "main": "convert-to-ndjson.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/juliecardinalli/julie-personal-site.git"
+    "url": "git+https://github.com/juliecardinalli/julieperplexity-agent.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/juliecardinalli/julie-personal-site/issues"
+    "url": "https://github.com/juliecardinalli/julieperplexity-agent/issues"
   },
-  "homepage": "https://github.com/juliecardinalli/julie-personal-site#readme",
+  "homepage": "https://github.com/juliecardinalli/julieperplexity-agent#readme",
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",

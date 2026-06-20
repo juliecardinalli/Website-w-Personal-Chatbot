@@ -1,33 +1,66 @@
-# julie-personal-site
+# Julie Personal Site
 
-Personal website and AI chatbot for Julie Cardinalli.
+Personal portfolio website and AI chatbot for Julie Cardinalli.
 
-The site showcases Julie's professional background, technical projects, personal achievements, and personality in a sleek, modern portfolio format. The chatbot answers as Julie using a general personal knowledge base rather than a role-specific application narrative.
+The frontend is a React/Vite app. The chatbot is backed by Cloudflare Workers AI, a Cloudflare Vectorize index, and a small embedding worker that turns the site's Q&A knowledge base into searchable context.
 
-## App
+## What is included
 
-- Frontend: React + Vite in `Julie-chat`
-- Chat API: Cloudflare Worker in `backend/agent-worker.js`
-- AI stack: Cloudflare Workers AI + Vectorize retrieval
-- Deployment target: Cloudflare Pages for the frontend and Cloudflare Workers for the chatbot API
+- `Julie-chat/`: React/Vite frontend for the personal site
+- `backend/agent-worker.js`: Chat API Worker
+- `backend/embed-worker.js`: Embedding Worker used by the chat and vector scripts
+- `backend/qna.json`: Source knowledge base for chatbot retrieval
+- `vectorize/embed.js`: Generates vector embeddings from `backend/qna.json`
+- `vectorize/upload.js`: Uploads generated vectors to Cloudflare Vectorize
+- `wrangler.toml`: Cloudflare Worker config for the chat API
+- `embed-worker.toml`: Cloudflare Worker config for the embedding service
 
-## Local development
+## Prerequisites
+
+- Node.js 18+
+- npm
+- Cloudflare account with Workers AI enabled
+- Cloudflare Vectorize index
+- Wrangler CLI access to the target Cloudflare account
+
+## Local setup
+
+Install frontend dependencies:
+
+```bash
+cd Julie-chat
+npm install
+```
+
+Create local environment config for vector scripts:
+
+```bash
+cp .dev.vars.example .dev.vars
+```
+
+Then fill in the values in `.dev.vars`. Do not commit `.dev.vars`; it is intentionally ignored.
+
+## Run the frontend locally
 
 ```bash
 cd Julie-chat
 npm run dev
 ```
 
-## Build
+The chat component currently calls the deployed Worker endpoint in `Julie-chat/src/components/Chat.jsx`.
+
+## Build the frontend
 
 ```bash
 cd Julie-chat
 npm run build
 ```
 
-## Cloudflare deploy notes
+The production build is written to `Julie-chat/dist/`.
 
-Frontend:
+## Deploy
+
+Deploy the frontend to Cloudflare Pages:
 
 ```bash
 cd Julie-chat
@@ -35,10 +68,31 @@ npm run build
 npx wrangler pages deploy dist --project-name julie-personal-site
 ```
 
-Worker:
+Deploy the chat Worker:
 
 ```bash
-npx wrangler deploy
+npx wrangler deploy --config wrangler.toml
 ```
 
-After updating `backend/qna.json`, regenerate embeddings and upload the refreshed vectors before relying on production chatbot retrieval.
+Deploy the embedding Worker:
+
+```bash
+npx wrangler deploy --config embed-worker.toml
+```
+
+## Update chatbot knowledge
+
+After editing `backend/qna.json`, regenerate embeddings and upload the refreshed vectors:
+
+```bash
+node vectorize/embed.js
+node vectorize/upload.js
+```
+
+The upload script reads `CF_API_TOKEN`, `CF_ACCOUNT_ID`, and `VECTORIZE_INDEX` from `.dev.vars`.
+
+## GitHub safety notes
+
+- `.dev.vars` is local-only and must not be committed.
+- `.DS_Store`, `node_modules/`, and build outputs are ignored.
+- If a Cloudflare token was ever committed, rotate it in Cloudflare before treating the repository as safe.

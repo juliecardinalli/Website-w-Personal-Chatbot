@@ -1,12 +1,38 @@
-# React + Vite
+# Julie Chat Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React/Vite frontend for Julie Cardinalli's personal portfolio and AI chatbot.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+## Build
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run build
+```
+
+## Preview a production build
+
+```bash
+npm run preview
+```
+
+## Main files
+
+- `src/App.jsx`: Page structure, portfolio sections, links, and visual content
+- `src/components/Chat.jsx`: Chat UI and API call to the deployed Cloudflare Worker
+- `src/index.css`: Global styling and responsive layout
+- `src/assets/`: Site images
+
+## Deployment
+
+Build output goes to `dist/` and can be deployed to Cloudflare Pages:
+
+```bash
+npm run build
+npx wrangler pages deploy dist --project-name julie-personal-site
+```

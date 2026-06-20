@@ -12,6 +12,9 @@ yarn-error.log*
 # Local environment variables
 .env
 .env.local
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
 
 # macOS system files
 .DS_Store
@@ -19,4 +22,3 @@ yarn-error.log*
 # IDE/project files
 .vscode/
 .idea/
-

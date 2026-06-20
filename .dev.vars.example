@@ -1,0 +1,4 @@
+CF_API_TOKEN=replace-with-cloudflare-api-token
+CF_ACCOUNT_ID=replace-with-cloudflare-account-id
+EMBED_WORKER_URL=https://embed-worker.example.workers.dev
+VECTORIZE_INDEX=julie-qna-fast
