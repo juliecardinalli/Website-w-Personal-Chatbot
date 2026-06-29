@@ -31,14 +31,11 @@ const highlights = [
 ];
 
 const professionalAccomplishments = [
-  "Solutions Engineer at Cloudflare, co-selling complex enterprise deals across Financial Services and Retail.",
-  "Cloudflare President's Club honoree, recognized in the top 3% of the global sales organization.",
-  "Influenced $2M+ in cumulative ACV by connecting technical wins to business outcomes and ROI.",
+  "Cloudflare Solutions Engineer supporting complex enterprise deals across Financial Services and Retail.",
+  "President's Club honoree in the top 3% of Cloudflare's global sales organization, with $2M+ in cumulative ACV influenced.",
   "Delivered a 25-minute FutureCon Salt Lake City talk on developing a Zero Trust mindset.",
-  "Built custom AI workflows for account prep, including pre-call briefs and pipeline summaries.",
-  "Built this personal AI chatbot with Cloudflare Workers AI, Vectorize, and a retrieval-augmented flow.",
-  "UC Berkeley Data Science graduate with coursework across economics, machine learning, and applied analytics.",
-  "Grew a TikTok audience by translating business, technology, and current events for broad audiences.",
+  "Built AI workflows for account prep, pipeline summaries, and this Cloudflare Workers AI personal chatbot.",
+  "UC Berkeley Data Science graduate and TikTok creator translating business, technology, and current events for broad audiences.",
 ];
 
 const personality = [
