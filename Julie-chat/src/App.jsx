@@ -13,25 +13,6 @@ import { useEffect } from "react";
 import julieCow from "./assets/julie-cow.jpg";
 import Chat from "./components/Chat";
 
-const highlights = [
-  {
-    value: "Top 3%",
-    label: "Cloudflare President's Club honoree across the global sales organization.",
-  },
-  {
-    value: "$2M+",
-    label: "Cumulative ACV influenced through technical wins across enterprise accounts.",
-  },
-  {
-    value: "AI",
-    label: "Built account-prep workflows, pipeline summaries, and this personal chatbot.",
-  },
-  {
-    value: "2.5M+",
-    label: "TikTok views translating business, tech, and current events for broad audiences.",
-  },
-];
-
 const personality = [
   "Every country flag",
   "Jeopardy! person",
@@ -103,7 +84,6 @@ function App() {
           JC
         </a>
         <nav className="nav-links">
-          <a href="#work">Work</a>
           <a href="#futurecon">Speaking</a>
           <a href="#site">Site</a>
           <a href="#contact">Contact</a>
@@ -127,9 +107,6 @@ function App() {
               <MessageCircle size={18} aria-hidden="true" />
               Chat with Julie
             </a>
-            <a className="secondary-action" href="#work">
-              See the proof
-            </a>
             <a className="secondary-action" href={emailUrl}>
               <Mail size={18} aria-hidden="true" />
               Contact
@@ -140,15 +117,6 @@ function App() {
         <div className="hero-chat" id="chat">
           <Chat />
         </div>
-      </section>
-
-      <section className="stats-strip" id="work" aria-label="Julie highlights">
-        {highlights.map((item) => (
-          <div className="stat-item" key={item.value}>
-            <strong>{item.value}</strong>
-            <span>{item.label}</span>
-          </div>
-        ))}
       </section>
 
       <section className="video-band" id="futurecon">

@@ -357,36 +357,6 @@ h3 {
   background: var(--blue);
 }
 
-.stats-strip {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--line);
-  box-shadow: 0 14px 44px rgba(82, 42, 65, 0.1);
-}
-
-.stat-item {
-  min-height: 158px;
-  padding: 24px;
-  background: rgba(255, 255, 255, 0.74);
-}
-
-.stat-item strong {
-  display: block;
-  margin-bottom: 12px;
-  color: #9a2f68;
-  font-size: 4.4rem;
-  line-height: 0.9;
-}
-
-.stat-item span {
-  color: var(--muted);
-  line-height: 1.45;
-}
-
 .content-band,
 .split-band,
 .chat-band,
@@ -836,9 +806,6 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .stats-strip {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 680px) {
@@ -854,7 +821,7 @@ h3 {
 
   .nav-links {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     flex: 1;
     gap: 2px;
   }
@@ -893,13 +860,11 @@ h3 {
     width: 100%;
   }
 
-  .stats-strip,
   .achievement-grid,
   .personality-grid {
     grid-template-columns: 1fr;
   }
 
-  .stat-item,
   .achievement-card,
   .personality-grid span {
     min-height: auto;
