@@ -125,7 +125,7 @@ function App() {
             <PlayCircle size={16} aria-hidden="true" />
             FutureCon SLC Speaker
           </span>
-          <h2>Speaking on Zero Trust with a technical, practical point of view.</h2>
+          <h2>Zero Trust, made practical.</h2>
           <p>
             Julie presented at FutureCon Salt Lake City on developing a Zero Trust mindset, translating
             security concepts into a clear framework for business and technical audiences.
@@ -152,7 +152,7 @@ function App() {
             <Code2 size={16} aria-hidden="true" />
             About This Site
           </span>
-          <h2>Built like a tiny personal AI lab, with real personality behind it.</h2>
+          <h2>A personal AI lab.</h2>
         </div>
         <div className="site-detail-stack">
           <p>
@@ -181,7 +181,7 @@ function App() {
             <Camera size={16} aria-hidden="true" />
             Connect
           </span>
-          <h2>Content, contact, and the places Julie shows up online.</h2>
+          <h2>Find me online.</h2>
           <p>
             Julie shares practical, conversational takes on business, technology, and current events.
             For opportunities, speaking, collaborations, or a thoughtful hello, email is the cleanest

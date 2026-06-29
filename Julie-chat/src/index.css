@@ -177,8 +177,8 @@ h1 {
 h2 {
   max-width: 760px;
   margin-bottom: 18px;
-  font-size: 4.5rem;
-  line-height: 0.95;
+  font-size: 3.2rem;
+  line-height: 1.05;
   letter-spacing: 0;
 }
 
@@ -788,7 +788,7 @@ h3 {
   }
 
   h2 {
-    font-size: 3.35rem;
+    font-size: 2.65rem;
   }
 
   .hero-lede,
@@ -842,7 +842,7 @@ h3 {
   }
 
   h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .hero-lede,
