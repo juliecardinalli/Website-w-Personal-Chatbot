@@ -580,7 +580,12 @@ h3 {
   align-items: start;
 }
 
-.site-build-band p {
+.site-detail-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.site-detail-stack p {
   margin: 0;
   padding: 28px;
   border: 1px solid var(--line);
@@ -592,14 +597,11 @@ h3 {
   line-height: 1.65;
 }
 
-.life-band {
-  padding-bottom: 8px;
-}
-
 .personality-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+  margin-top: 14px;
 }
 
 .personality-grid span {
@@ -892,10 +894,6 @@ h3 {
 
   .achievement-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .personality-grid {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
 

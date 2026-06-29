@@ -209,33 +209,31 @@ function App() {
       </section>
 
       <section className="site-build-band" id="site">
-        <div>
+        <div className="section-heading">
           <span className="eyebrow">
             <Code2 size={16} aria-hidden="true" />
             About This Site
           </span>
-          <h2>Built like a tiny personal AI lab, hosted on Cloudflare.</h2>
+          <h2>Built like a tiny personal AI lab, with real personality behind it.</h2>
         </div>
-        <p>
-          This site is a React/Vite app hosted on Cloudflare Pages. The chat runs through a Cloudflare
-          Worker, uses Workers AI for generation, searches Julie-specific Q&A context in Cloudflare
-          Vectorize, and calls a small embedding Worker so the bot can answer in a way that feels more
-          like Julie and less like a customer-support toaster.
-        </p>
-      </section>
-
-      <section className="content-band life-band" id="personality">
-        <div className="section-heading">
-          <span className="eyebrow">
-            <MapPin size={16} aria-hidden="true" />
-            Beyond the Resume
-          </span>
-          <h2>Curious, well-rounded, and comfortable bringing personality to the room.</h2>
-        </div>
-        <div className="personality-grid">
-          {personality.map((item) => (
-            <span key={item}>{item}</span>
-          ))}
+        <div className="site-detail-stack">
+          <p>
+            This site is a React/Vite app hosted on Cloudflare Pages. The chat runs through a Cloudflare
+            Worker, uses Workers AI for generation, searches Julie-specific Q&A context in Cloudflare
+            Vectorize, and calls a small embedding Worker so the bot can answer in a way that feels more
+            like Julie and less like a customer-support toaster.
+          </p>
+          <div>
+            <span className="eyebrow">
+              <MapPin size={16} aria-hidden="true" />
+              Beyond the Resume
+            </span>
+            <div className="personality-grid">
+              {personality.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
