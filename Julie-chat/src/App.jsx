@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useEffect } from "react";
 import julieCow from "./assets/julie-cow.jpg";
+import juliePresidentsClub from "./assets/julie-presidents-club.jpg";
 import Chat from "./components/Chat";
 
 const personality = [
@@ -147,12 +148,17 @@ function App() {
       </section>
 
       <section className="site-build-band" id="site">
-        <div className="section-heading">
-          <span className="eyebrow">
-            <Code2 size={16} aria-hidden="true" />
-            About This Site
-          </span>
-          <h2>A personal AI lab.</h2>
+        <div className="site-intro">
+          <div className="section-heading">
+            <span className="eyebrow">
+              <Code2 size={16} aria-hidden="true" />
+              About This Site
+            </span>
+            <h2>A personal AI lab.</h2>
+          </div>
+          <div className="site-photo">
+            <img src={juliePresidentsClub} alt="Julie at Cloudflare President's Club winners wall" />
+          </div>
         </div>
         <div className="site-detail-stack">
           <p>
@@ -208,7 +214,7 @@ function App() {
           <img src={julieCow} alt="Julie smiling with a fluffy cow" />
           <div>
             <Heart size={18} aria-hidden="true" />
-            <span>Personal, approachable, and still very much built for the real internet.</span>
+            <span>Still very much built for the real internet.</span>
           </div>
         </div>
       </section>
