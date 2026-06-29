@@ -8,34 +8,28 @@ import {
   MessageCircle,
   PlayCircle,
   Sparkles,
-  Trophy,
 } from "lucide-react";
 import { useEffect } from "react";
 import julieCow from "./assets/julie-cow.jpg";
-import juliePresidentsClub from "./assets/julie-presidents-club.jpg";
 import Chat from "./components/Chat";
 
 const highlights = [
   {
     value: "Top 3%",
-    label: "Cloudflare President's Club honoree across the global sales organization",
+    label: "Cloudflare President's Club honoree across the global sales organization.",
   },
   {
     value: "$2M+",
-    label: "Cumulative ACV influenced through technical wins across key accounts",
+    label: "Cumulative ACV influenced through technical wins across enterprise accounts.",
+  },
+  {
+    value: "AI",
+    label: "Built account-prep workflows, pipeline summaries, and this personal chatbot.",
   },
   {
     value: "2.5M+",
-    label: "TikTok views translating business, tech, and current events for broad audiences",
+    label: "TikTok views translating business, tech, and current events for broad audiences.",
   },
-];
-
-const professionalAccomplishments = [
-  "Cloudflare Solutions Engineer supporting complex enterprise deals across Financial Services and Retail.",
-  "President's Club honoree in the top 3% of Cloudflare's global sales organization, with $2M+ in cumulative ACV influenced.",
-  "Delivered a 25-minute FutureCon Salt Lake City talk on developing a Zero Trust mindset.",
-  "Built AI workflows for account prep, pipeline summaries, and this Cloudflare Workers AI personal chatbot.",
-  "UC Berkeley Data Science graduate and TikTok creator translating business, technology, and current events for broad audiences.",
 ];
 
 const personality = [
@@ -148,34 +142,13 @@ function App() {
         </div>
       </section>
 
-      <section className="stats-strip" aria-label="Julie highlights">
+      <section className="stats-strip" id="work" aria-label="Julie highlights">
         {highlights.map((item) => (
           <div className="stat-item" key={item.value}>
             <strong>{item.value}</strong>
             <span>{item.label}</span>
           </div>
         ))}
-      </section>
-
-      <section className="feature-band" id="work">
-        <div className="feature-photo">
-          <img src={juliePresidentsClub} alt="Julie at Cloudflare President's Club winners wall" />
-          <span>Cloudflare President's Club honoree.</span>
-        </div>
-        <div className="feature-copy">
-          <div className="section-heading">
-            <span className="eyebrow">
-              <Trophy size={16} aria-hidden="true" />
-              Professional Accomplishments
-            </span>
-            <h2>Technical depth, clear storytelling, and measurable business impact.</h2>
-          </div>
-          <ul className="accomplishment-list">
-            {professionalAccomplishments.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
       </section>
 
       <section className="video-band" id="futurecon">
