@@ -65,7 +65,7 @@ Deploy the frontend to Cloudflare Pages:
 ```bash
 cd Julie-chat
 npm run build
-npx wrangler pages deploy dist --project-name julie-personal-site
+CLOUDFLARE_ACCOUNT_ID=b9aeac9364f25369c11c9611e57a2c1c npx wrangler pages deploy dist --project-name julieperplexity-agent --branch main
 ```
 
 Deploy the chat Worker:

@@ -11,7 +11,7 @@ export default function Chat() {
   const [messages, setMessages] = useState([
     {
       role: "agent",
-      content: "Hi, I am Julie's personal AI. Ask me about her work, projects, background, or point of view.",
+      content: "I'm Julie's AI. Ask about her work or projects.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -38,6 +38,7 @@ export default function Chat() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt }),
+        signal: AbortSignal.timeout(20000),
       });
 
       if (!response.ok) {
