@@ -1,10 +1,12 @@
-# Interactive Portfolio + Personal Chatbot
+# Interactive Portfolio Website
 
 An explorable island-world portfolio for Julie Cardinalli, built with React and Three.js. Each island opens a different part of the site, from work and projects to life outside work.
 
 [Visit the live site](https://jcardinalli.work/)
 
 The personal chatbot uses Cloudflare Workers AI and Vectorize to retrieve context from a curated Q&A knowledge base before answering. A separate embedding worker supports retrieval and knowledge-base updates.
+
+This repository contains the **complete website**, including the 3D experience, content panels, and integrated chatbot. For a portable, backend-focused version of the chatbot with sample data and offline tests, see the separate [Portfolio Chatbot project](https://github.com/juliecardinalli/portfolio-chatbot). That extraction does not replace this site's production deployment.
 
 ## Highlights
 
