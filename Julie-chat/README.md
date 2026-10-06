@@ -1,6 +1,6 @@
-# Julie Chat Frontend
+# Island-World Portfolio Frontend
 
-React/Vite frontend for Julie Cardinalli's personal portfolio and AI chatbot.
+React, Vite, and Three.js frontend for [Julie Cardinalli's portfolio](https://jcardinalli.work/). See the [repository README](../README.md) for the backend and full setup.
 
 ## Local development
 
@@ -23,16 +23,19 @@ npm run preview
 
 ## Main files
 
-- `src/App.jsx`: Page structure, portfolio sections, links, and visual content
+- `src/IslandApp.jsx`: App shell, navigation, and content-panel state
+- `src/components/World.jsx`: Interactive Three.js islands
+- `src/components/ChapterContents.jsx`: Portfolio sections
 - `src/components/Chat.jsx`: Chat UI and API call to the deployed Cloudflare Worker
-- `src/index.css`: Global styling and responsive layout
-- `src/assets/`: Site images
+- `src/islands.css`: Island-world styling and responsive panels
+- `src/assets/`: Portfolio photos
+- `public/og.png`: Social-link preview image
 
 ## Deployment
 
-Build output goes to `dist/` and can be deployed to Cloudflare Pages:
+Build output goes to `dist/`. The production site deploys through the existing Cloudflare Pages GitHub integration. To deploy your own copy manually:
 
 ```bash
 npm run build
-npx wrangler pages deploy dist --project-name julie-personal-site
+npx wrangler pages deploy dist --project-name your-pages-project
 ```
