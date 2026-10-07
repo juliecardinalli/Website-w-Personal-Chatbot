@@ -34,7 +34,7 @@ export default function Chat() {
     setLoading(true);
 
     try {
-      const response = await fetch("https://julie-agent-worker.juliecardinalli.workers.dev", {
+      const response = await fetch("https://julie-agent-worker.juliecardinalli-personal.workers.dev", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt }),

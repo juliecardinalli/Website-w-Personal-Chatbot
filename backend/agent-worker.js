@@ -18,7 +18,6 @@ export default {
 
     try {
       const { prompt } = await request.json();
-      console.log("📨 Prompt received:", prompt);
 
       if (!prompt) {
         return new Response('Missing "prompt" in request body', { status: 400 });
@@ -36,27 +35,24 @@ export default {
       const { embedding } = await embedRes.json();
       const queryEmbedding = embedding?.[0];
 
-      console.log("🧠 Embedding received:", queryEmbedding?.slice(0, 5), "...");
 
       if (!Array.isArray(queryEmbedding)) {
-        console.error("❌ Embedding failed:", embedding);
+        console.error("Embedding failed");
         return new Response("Embedding failed", { status: 500 });
       }
 
       // Query vector index
       const searchRes = await env.VECTORIZE.query(queryEmbedding, {
         topK: 5,
-        returnMetadata: true,
+        returnMetadata: "all",
       });
 
-      console.log("🔍 Vector search matches:", searchRes.matches?.length || 0);
 
       const context = searchRes.matches
         .map((m) => `Q: ${m.metadata.question}\nA: ${m.metadata.answer}`)
         .join("\n\n");
 
       const finalPrompt = `Relevant Q&A examples:\n${context}\n\nUser: ${prompt}`;
-      console.log("📝 Final prompt to LLM:", finalPrompt.slice(0, 200), "...");
 
       // Call LLM
       const aiResponse = await env.LLM.run("@cf/meta/llama-3.1-8b-instruct-fast", {
@@ -68,7 +64,6 @@ export default {
         temperature: 0.55,
       });
 
-      console.log("🤖 LLM response:", aiResponse.response);
 
       return new Response(JSON.stringify({ answer: aiResponse.response }), {
         status: 200,
@@ -83,7 +78,6 @@ export default {
     }
   },
 };
-
 
 
 

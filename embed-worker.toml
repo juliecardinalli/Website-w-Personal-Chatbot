@@ -1,8 +1,10 @@
 name = "embed-worker"
+account_id = "d2dbc2205fcf0779553671040c235052"
 main = "backend/embed-worker.js"
 compatibility_date = "2025-07-30"
+workers_dev = false
+preview_urls = false
 
 [ai]
 binding = "AI"
-
 

@@ -77,12 +77,12 @@ The production build is written to `Julie-chat/dist/`.
 
 ## Deploy
 
-Production deploys from the `main` branch through the existing Cloudflare Pages GitHub integration. A manual deployment is also possible:
+The personal-account deployment is the Cloudflare Pages project `julie-cardinalli-world`. The previous account's GitHub integration has not been moved or disconnected, so pushing to `main` does **not** automatically update this new project. Publish it explicitly:
 
 ```bash
 cd Julie-chat
 npm run build
-CLOUDFLARE_ACCOUNT_ID=your-account-id npx wrangler pages deploy dist --project-name your-pages-project --branch main
+CLOUDFLARE_ACCOUNT_ID=d2dbc2205fcf0779553671040c235052 npx wrangler pages deploy dist --project-name julie-cardinalli-world --branch main
 ```
 
 Deploy the chat Worker:
@@ -97,16 +97,27 @@ Deploy the embedding Worker:
 npx wrangler deploy --config embed-worker.toml
 ```
 
+Both Worker configuration files pin the personal account to prevent accidental deployments to the old organization account. Deploy the embedding Worker before the chat Worker on a new account. `embed-worker` is private and is reached by the chat Worker's `EMBED` service binding; only `julie-agent-worker` has a public `workers.dev` URL. The chat uses the `julie-qna-fast` Vectorize index (384 dimensions, cosine metric) and Workers AI. No API keys are shipped to the browser.
+
+Run the migration regression checks with `node --test backend/agent-worker.test.js` and `node --test Julie-chat/verify-island-labels.test.js`.
+
 ## Update chatbot knowledge
 
-After editing `backend/qna.json`, regenerate embeddings and upload the refreshed vectors:
+After editing `backend/qna.json`, run the private embedding Worker through a local, authenticated remote-development session in one terminal:
 
 ```bash
-node vectorize/embed.js
-node vectorize/upload.js
+npx wrangler dev --config embed-worker.toml --remote --port 8787
 ```
 
-The upload script reads `CF_API_TOKEN`, `CF_ACCOUNT_ID`, and `VECTORIZE_INDEX` from `.dev.vars`. Use your own account, bindings, index, and endpoints for a separate deployment.
+In another terminal, regenerate embeddings, convert them, and upload through Wrangler's current Vectorize v2 command:
+
+```bash
+EMBED_WORKER_URL=http://127.0.0.1:8787 node vectorize/embed.js
+node convert-to-ndjson.js
+CLOUDFLARE_ACCOUNT_ID=d2dbc2205fcf0779553671040c235052 npx wrangler vectorize upsert julie-qna-fast --file vectorize/embeddings.ndjson
+```
+
+The legacy `vectorize/upload.js` script targets the old Vectorize API and is not used for this deployment. Stop the remote-development session when finished. Use your own account, bindings, index, and endpoints for a separate deployment.
 
 ## GitHub safety notes
 
