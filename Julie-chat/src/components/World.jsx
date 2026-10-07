@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { arrangeIslandLabels } from "../island-label-layout";
 
-const places = [[-5.4,.45,-3.1],[3.6,.7,-4.8],[5.3,-.35,4.5],[-4.1,-.65,5.4]];
+const places = [[-5.4,.45,-3.1],[3.6,.7,-4.8],[5.3,-.35,4.5],[-4.1,-.65,5.4],[-.1,.15,.65]];
 
 export default function World({ chapters, onSelect, onReady, paused }) {
   const host = useRef(null), labelRefs = useRef({}), pauseRef = useRef(paused);
@@ -43,8 +44,9 @@ export default function World({ chapters, onSelect, onReady, paused }) {
       if(pine){cyl(g,0,.42*s,.88*s,trees[variant%4],x,1*s,z,6);cyl(g,0,.32*s,.7*s,trees[(variant+1)%4],x,1.4*s,z,6);}
       else ball(g,.48*s,trees[variant%4],x,1*s,z,0).scale.set(.85,1.2,.9);
     }
-    function island(index,color){
+    function island(index,color,scale=1){
       const g=new THREE.Group();g.position.set(...places[index]);g.userData.island=chapters[index].id;root.add(g);
+      g.scale.setScalar(scale);
       cyl(g,3,2.9,.3,color,0,-.02,0,15);cyl(g,2.95,2.15,.65,0xb4a386,0,-.48,0,15);cyl(g,2.14,1.4,.58,0x998670,0,-1.095,0,13);
       for(let j=0;j<23;j++){const a=j/23*Math.PI*2;const tile=box(g,.52,.22+(j%3)*.13,.58,[0xccc6a9,0xb6bda1,0xd6d0b7,0xb7a98e][j%4],Math.cos(a)*2.92,-.04,Math.sin(a)*2.92);tile.rotation.y=-a;}
       for(let j=0;j<10;j++){const a=j*2.38+index;tree(g,Math.cos(a)*2.35,Math.sin(a)*2.35,.45+(j%3)*.2,index===3,j);}
@@ -83,6 +85,33 @@ export default function World({ chapters, onSelect, onReady, paused }) {
     const lake=cyl(life,.83,.83,.025,0x91bfc1,1.2,.16,.58,20);lake.scale.z=.68;
     box(life,.8,.6,.68,0xdfae82,-.65,.49,1.03);const roof=mesh(life,new THREE.ConeGeometry(.68,.47,4),0xb56f52,-.65,.98,1.03);roof.rotation.y=Math.PI/4;roof.scale.z=.85;
     box(life,.18,.33,.025,0x63796a,-.65,.39,1.38);box(life,.16,.16,.025,0xf7e2aa,-.9,.64,1.38);tree(life,-1.7,.25,1.2,true,1);tree(life,1.45,-1.7,.9,true,2);
+    // A small reading garden: open book, library shelves, and a place to sit.
+    const reading=island(4,0xd7cda8,.76);
+    cyl(reading,1.55,1.6,.1,0xe8dfc7,0,.19,.1,20);
+    box(reading,1.9,1.45,.45,0x9d7958,0,.99,-1.08);
+    box(reading,1.7,1.23,.04,0xc1a781,0,.99,-.83);
+    const bookColors=[0xab6657,0x708d75,0xb59a5c,0x8c88ad,0x769ca1,0xd1a27a,0x627d77];
+    for(let row=0;row<2;row++){
+      box(reading,1.9,.08,.55,0x9d7958,0,.38+row*.63,-1.01);
+      for(let j=0;j<7;j++){
+        const height=.31+(j%3)*.055,x=-.68+j*.22,y=.43+row*.63+height/2;
+        box(reading,.16,height,.28,bookColors[(j+row*2)%7],x,y,-.83);
+        box(reading,.11,.025,.015,0xe9dec1,x,y+height*.22,-.682);
+      }
+    }
+    box(reading,2.08,.13,.63,0xb39468,0,1.77,-1.03);
+    cyl(reading,.28,.42,.63,0xb8a27c,0,.58,.45,8);
+    const openBook=new THREE.Group();openBook.position.set(0,.98,.45);openBook.rotation.y=-.15;reading.add(openBook);
+    for(const side of [-1,1]){
+      const page=new THREE.Group();page.position.x=side*.42;page.rotation.z=side*.17;openBook.add(page);
+      box(page,.88,.075,1.13,0xa3614b);box(page,.81,.085,1.03,0xf4eddb,0,.077,0);
+      for(let line=0;line<5;line++)box(page,.52,.006,.018,0xd0c4a7,0,.123,-.32+line*.15);
+    }
+    box(reading,.09,.025,.79,0x738e7b,.04,1.02,.58);
+    box(reading,.78,.12,.36,0xb0936c,1.27,.47,.97);box(reading,.78,.38,.08,0xb0936c,1.27,.71,1.13);
+    for(const x of [.98,1.56])box(reading,.09,.32,.28,0x897a60,x,.27,.97);
+    cyl(reading,.035,.045,1.55,0x6d7767,-1.32,.98,.52,6);
+    box(reading,.29,.36,.29,0xf1d89f,-1.32,1.85,.52);cyl(reading,0,.26,.2,0x8d8060,-1.32,2.13,.52,4);
     // An elevated railway connects the islands. The train follows its tangent.
     const curve=new THREE.CatmullRomCurve3([
       new THREE.Vector3(-5.4,.77,-.2),new THREE.Vector3(-1.5,1.05,-1.2),new THREE.Vector3(3.5,1,-1.75),new THREE.Vector3(6.8,.6,.55),
@@ -111,13 +140,14 @@ export default function World({ chapters, onSelect, onReady, paused }) {
       raf=requestAnimationFrame(render);const dt=Math.min((now-last)/1000||0,.05);last=now;if(document.hidden)return;if(!pauseRef.current)time+=dt;controls.update();
       animated.forEach((entry)=>{if(entry.type==="float")entry.object.position.y=entry.base+Math.sin(time*.65+entry.phase)*.085;else entry.object.rotation.z=time*.22;});
       const t=(time*.012+.11)%1;train.position.copy(curve.getPointAt(t));const dir=curve.getTangentAt(t);train.rotation.y=Math.atan2(dir.x,dir.z);
-      islands.forEach((g,i)=>{
-        const label=labelRefs.current[chapters[i].id];if(!label)return;
-        position.set(g.position.x,g.position.y+.15,g.position.z+3.05).project(camera);
-        const half=(label.offsetWidth||150)/2+8;
-        const x=THREE.MathUtils.clamp((position.x*.5+.5)*width,half,width-half);
-        const y=THREE.MathUtils.clamp((-position.y*.5+.5)*height,20,height-64);
-        label.style.transform=`translate(${x}px,${y}px) translate(-50%,8px)`;
+      const labels=islands.flatMap((g,i)=>{
+        const label=labelRefs.current[chapters[i].id];if(!label)return [];
+        position.set(g.position.x,g.position.y+.15,g.position.z+3.05*g.scale.z).project(camera);
+        const w=label.offsetWidth||150,h=label.offsetHeight||40;
+        return [{label,width:w,height:h,x:(position.x*.5+.5)*width-w/2,y:(-position.y*.5+.5)*height+8}];
+      });
+      arrangeIslandLabels(labels,width,height).forEach(({label,x,y})=>{
+        label.style.transform=`translate(${x}px,${y}px)`;
       });
       renderer.render(scene,camera);
     }
@@ -125,6 +155,6 @@ export default function World({ chapters, onSelect, onReady, paused }) {
     return()=>{cancelAnimationFrame(raf);observer.disconnect();controls.dispose();renderer.domElement.removeEventListener("pointerdown",onDown);renderer.domElement.removeEventListener("pointerup",onUp);scene.traverse((o)=>{if(o.geometry)o.geometry.dispose();});materials.forEach((m)=>m.dispose());domeMat.dispose();shadow.material.dispose();renderer.dispose();renderer.domElement.remove();};
   },[chapters,onReady,onSelect]);
   return <><div ref={host} className="world-canvas" aria-hidden="true" />
-    {failed?<div className="world-fallback">A little world. A lot of curiosity.<p>The 3D view isn&apos;t available on this device. All four chapters are still available below.</p></div>:<div className="world-labels" aria-label="Explore an island">{chapters.map((chapter)=><button ref={(node)=>{labelRefs.current[chapter.id]=node;}} className="island-label" key={chapter.id} onClick={()=>onSelect(chapter.id)} aria-label={`Explore ${chapter.label}: ${chapter.sub}`}><span style={{color:chapter.color}}>{chapter.number}</span><strong>{chapter.label}</strong><ArrowUpRight /></button>)}</div>}
+    {failed?<div className="world-fallback">A little world. A lot of curiosity.<p>The 3D view isn&apos;t available on this device. All chapters are still available below.</p></div>:<div className="world-labels" aria-label="Explore an island">{chapters.map((chapter)=><button ref={(node)=>{labelRefs.current[chapter.id]=node;}} className="island-label" key={chapter.id} onClick={()=>onSelect(chapter.id)} aria-label={`Explore ${chapter.label}: ${chapter.sub}`}><span style={{color:chapter.color}}>{chapter.number}</span><strong>{chapter.label}</strong><ArrowUpRight /></button>)}</div>}
   </>;
 }

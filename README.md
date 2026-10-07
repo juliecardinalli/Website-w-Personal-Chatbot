@@ -11,6 +11,7 @@ This repository contains the **complete website**, including the 3D experience, 
 ## Highlights
 
 - Interactive 3D island navigation with HTML content panels
+- A reading-garden island with Julie's 2026 bookshelf
 - React/Vite frontend and a separate Three.js world module
 - Retrieval-backed chat API on Cloudflare Workers
 - Static frontend hosted on Cloudflare Pages

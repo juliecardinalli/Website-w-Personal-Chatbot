@@ -7,6 +7,7 @@ const expected = {
   ai: ['OpenCode', 'Miro', 'Salesforce', 'Cloudflare Workers AI', 'Opening Julie AI'],
   speaking: ['player.vimeo.com/video/1111253347?h=2dbaa3f485', 'Developing a Zero Trust Mindset', 'tiktok.com'],
   life: ['fluffy cow', 'Skiing', 'Beach volleyball', 'Chess'],
+  reading: ['Books read in 2026', 'James', 'Percival Everett', 'The Seven Husbands of Evelyn Hugo', 'Taylor Jenkins Reid', 'The Midnight Library', 'Matt Haig', 'Has China Won?', 'Kishore Mahbubani', 'The Song of Achilles', 'Madeline Miller', 'The Alchemist', 'Paulo Coelho', 'Fruit Fly', 'Josh Silver'],
   about: ['Berkeley', 'President', 'linkedin.com', 'tiktok.com', 'x.com/softlaunchjulie'],
   contact: ['mailto:juliecardinalli@gmail.com', 'linkedin.com', 'tiktok.com', 'x.com/softlaunchjulie'],
 };
@@ -16,4 +17,4 @@ for (const [chapter, checks] of Object.entries(expected)) {
   assert.ok(!html.includes('undefined'), `${chapter}: unexpected undefined`);
   console.log(`PASS ${chapter}: required content and links render`);
 }
-console.log('All six content panels passed server-side rendering checks.');
+console.log(`All ${Object.keys(expected).length} content panels passed server-side rendering checks.`);

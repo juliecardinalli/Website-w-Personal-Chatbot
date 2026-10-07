@@ -10,6 +10,15 @@ const socials = [
   ["TikTok", "https://www.tiktok.com/@juliemeow69"],
   ["X", "https://x.com/softlaunchjulie"],
 ];
+const readingList = [
+  { title: "James", author: "Percival Everett", color: "#ab6657" },
+  { title: "The Seven Husbands of Evelyn Hugo", author: "Taylor Jenkins Reid", color: "#708d75" },
+  { title: "The Midnight Library", author: "Matt Haig", color: "#8c88ad" },
+  { title: "Has China Won?", author: "Kishore Mahbubani", color: "#b59a5c" },
+  { title: "The Song of Achilles", author: "Madeline Miller", color: "#769ca1" },
+  { title: "The Alchemist", author: "Paulo Coelho", color: "#b28660" },
+  { title: "Fruit Fly", author: "Josh Silver", color: "#627d77" },
+];
 function ExternalLink({ href, children }) {
   return <a className="panel-link" href={href} target="_blank" rel="noreferrer">{children}<ArrowUpRight size={16} aria-hidden="true" /></a>;
 }
@@ -53,6 +62,13 @@ export default function ChapterContents({ chapter, onNavigate }) {
     <p>I like skiing, beach volleyball, chess, and a good excuse to get outside.</p>
     <div className="interest-tags"><span>Skiing</span><span>Beach volleyball</span><span>Chess</span></div>
     <button className="next-chapter" onClick={() => onNavigate("contact")}>Say hello <ArrowRight size={16} /></button>
+  </div>;
+  if (chapter === "reading") return <div className="chapter-content reading-chapter">
+    <p className="chapter-lede">A few books I read this year.</p>
+    <ul className="reading-list" aria-label="Books read in 2026">{readingList.map((book, index) => <li key={book.title} className="reading-book" style={{ "--book-color": book.color }}>
+      <div className="book-cover" aria-hidden="true"><span>{String(index + 1).padStart(2, "0")}</span><i /></div>
+      <div><h3>{book.title}</h3><p>{book.author}</p></div>
+    </li>)}</ul>
   </div>;
   if (chapter === "contact") return <div className="chapter-content">
     <p className="chapter-lede">Email is best.</p>

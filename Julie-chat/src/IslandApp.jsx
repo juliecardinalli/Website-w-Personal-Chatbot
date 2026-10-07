@@ -8,6 +8,7 @@ const chapters = [
   { id: "ai", number: "02", label: "The curiosity lab", sub: "Things I build", color: "#8c88bd" },
   { id: "speaking", number: "03", label: "The conversation", sub: "Speaking & storytelling", color: "#bb7068" },
   { id: "life", number: "04", label: "The great outside", sub: "A life beyond the screen", color: "#708d75" },
+  { id: "reading", number: "05", label: "The bookshelf", sub: "Read in 2026", color: "#a18a52" },
 ];
 
 export default function App() {
@@ -29,7 +30,7 @@ export default function App() {
   useEffect(() => {
     const syncHash = () => {
       const id = window.location.hash.slice(1);
-      if (["work", "ai", "speaking", "life", "contact", "about"].includes(id)) openChapter(id);
+      if ([...chapters.map(({ id }) => id), "contact", "about"].includes(id)) openChapter(id);
       else if (dialog.current?.open) dialog.current.close();
     };
     syncHash();
