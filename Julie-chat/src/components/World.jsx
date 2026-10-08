@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { arrangeIslandLabels } from "../island-label-layout";
 
-const places = [[-5.4,.45,-3.1],[3.6,.7,-4.8],[5.3,-.35,4.5],[-4.1,-.65,5.4],[-.1,.15,.65]];
+const places = [[-5.4,.45,-3.1],[3.6,.7,-4.8],[5.3,-.35,4.5],[-.1,.15,.65]];
 
 export default function World({ chapters, onSelect, onReady, paused }) {
   const host = useRef(null), labelRefs = useRef({}), pauseRef = useRef(paused);
@@ -49,7 +49,7 @@ export default function World({ chapters, onSelect, onReady, paused }) {
       g.scale.setScalar(scale);
       cyl(g,3,2.9,.3,color,0,-.02,0,15);cyl(g,2.95,2.15,.65,0xb4a386,0,-.48,0,15);cyl(g,2.14,1.4,.58,0x998670,0,-1.095,0,13);
       for(let j=0;j<23;j++){const a=j/23*Math.PI*2;const tile=box(g,.52,.22+(j%3)*.13,.58,[0xccc6a9,0xb6bda1,0xd6d0b7,0xb7a98e][j%4],Math.cos(a)*2.92,-.04,Math.sin(a)*2.92);tile.rotation.y=-a;}
-      for(let j=0;j<10;j++){const a=j*2.38+index;tree(g,Math.cos(a)*2.35,Math.sin(a)*2.35,.45+(j%3)*.2,index===3,j);}
+      for(let j=0;j<10;j++){const a=j*2.38+index;tree(g,Math.cos(a)*2.35,Math.sin(a)*2.35,.45+(j%3)*.2,false,j);}
       islands.push(g);return g;
     }
     function windows(g,x,z,rows,columns,gap,baseY){for(let r=0;r<rows;r++)for(let col=0;col<columns;col++)box(g,.12,.2,.02,0x4b6668,x+col*gap,baseY+r*.38,z);}
@@ -79,14 +79,8 @@ export default function World({ chapters, onSelect, onReady, paused }) {
     box(speaking,.36,.5,.32,0x7e9388,.08,.72,-.45);cyl(speaking,.018,.025,.28,0x48544d,.08,1.09,-.45,5);
     for(let row=0;row<2;row++)for(let j=0;j<5;j++){const x=(j-2)*.43,z=.66+row*.52;box(speaking,.29,.12,.28,0xb99473,x,.28,z);box(speaking,.29,.33,.08,0xb99473,x,.5,z+.11);}
     for(let j=0;j<6;j++)box(speaking,.065,.18+Math.sin(j*1.3)*.1,.015,0xb67863,(j-2.5)*.17,1.09,-.997);
-    // The outdoors: mountains, cabin, lake, and pines.
-    const life=island(3,0xaebca4);cyl(life,0,1.17,2.55,0x9aa690,-.65,1.4,-.9,5);cyl(life,0,.49,1.03,0xf1efe4,-.65,2.18,-.9,5);
-    cyl(life,0,.78,1.72,0xb1b5a0,.54,.99,-1.07,5);cyl(life,0,.31,.68,0xeeece0,.54,1.54,-1.07,5);
-    const lake=cyl(life,.83,.83,.025,0x91bfc1,1.2,.16,.58,20);lake.scale.z=.68;
-    box(life,.8,.6,.68,0xdfae82,-.65,.49,1.03);const roof=mesh(life,new THREE.ConeGeometry(.68,.47,4),0xb56f52,-.65,.98,1.03);roof.rotation.y=Math.PI/4;roof.scale.z=.85;
-    box(life,.18,.33,.025,0x63796a,-.65,.39,1.38);box(life,.16,.16,.025,0xf7e2aa,-.9,.64,1.38);tree(life,-1.7,.25,1.2,true,1);tree(life,1.45,-1.7,.9,true,2);
     // A small reading garden: open book, library shelves, and a place to sit.
-    const reading=island(4,0xd7cda8,.76);
+    const reading=island(3,0xd7cda8,.76);
     cyl(reading,1.55,1.6,.1,0xe8dfc7,0,.19,.1,20);
     box(reading,1.9,1.45,.45,0x9d7958,0,.99,-1.08);
     box(reading,1.7,1.23,.04,0xc1a781,0,.99,-.83);

@@ -7,8 +7,7 @@ const chapters = [
   { id: "work", number: "01", label: "The day job", sub: "Solutions engineering", color: "#de7852" },
   { id: "ai", number: "02", label: "The curiosity lab", sub: "Things I build", color: "#8c88bd" },
   { id: "speaking", number: "03", label: "The conversation", sub: "Speaking & storytelling", color: "#bb7068" },
-  { id: "life", number: "04", label: "The great outside", sub: "A life beyond the screen", color: "#708d75" },
-  { id: "reading", number: "05", label: "The bookshelf", sub: "Read in 2026", color: "#a18a52" },
+  { id: "reading", number: "04", label: "The bookshelf", sub: "Read in 2026", color: "#a18a52" },
 ];
 
 export default function App() {
@@ -31,7 +30,10 @@ export default function App() {
     const syncHash = () => {
       const id = window.location.hash.slice(1);
       if ([...chapters.map(({ id }) => id), "contact", "about"].includes(id)) openChapter(id);
-      else if (dialog.current?.open) dialog.current.close();
+      else {
+        if (dialog.current?.open) dialog.current.close();
+        window.history.replaceState(null, "", "#home");
+      }
     };
     syncHash();
     window.addEventListener("hashchange", syncHash);

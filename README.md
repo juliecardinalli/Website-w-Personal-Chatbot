@@ -1,6 +1,6 @@
 # Interactive Portfolio Website
 
-An explorable island-world portfolio for Julie Cardinalli, built with React and Three.js. Each island opens a different part of the site, from work and projects to life outside work.
+An explorable island-world portfolio for Julie Cardinalli, built with React and Three.js. Four islands cover work, projects, speaking, and reading.
 
 [Visit the live site](https://jcardinalli.work/)
 

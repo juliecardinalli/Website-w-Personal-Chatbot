@@ -3,18 +3,17 @@ import test from 'node:test';
 import { arrangeIslandLabels } from './src/island-label-layout.js';
 
 for (const width of [320, 390, 768, 1280]) {
-  test(`five island labels fit without overlap at ${width}px`, () => {
+  test(`four island labels fit without overlap at ${width}px`, () => {
     const height = 495;
     const input = [
       { id:'work', x:width*.17, y:225, width:105, height:40 },
       { id:'ai', x:width*.53, y:242, width:128, height:40 },
       { id:'reading', x:width*.29, y:272, width:117, height:40 },
-      { id:'life', x:5, y:306, width:133, height:40 },
       { id:'speaking', x:width*.39, y:329, width:131, height:40 },
     ];
     const original = structuredClone(input);
     const placed = arrangeIslandLabels(input, width, height);
-    assert.equal(placed.length,5);
+    assert.equal(placed.length,4);
     assert.deepEqual(input,original);
     for (const [index, a] of placed.entries()) {
       assert.ok(a.x >= 8 && a.x+a.width <= width-8);

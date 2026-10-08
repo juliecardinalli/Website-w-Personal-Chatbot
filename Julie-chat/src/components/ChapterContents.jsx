@@ -1,6 +1,5 @@
 import { lazy, Suspense } from "react";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
-import julieCow from "../assets/julie-cow.jpg";
 import juliePresidentsClub from "../assets/julie-presidents-club.jpg";
 
 const Chat = lazy(() => import("./Chat"));
@@ -54,13 +53,6 @@ export default function ChapterContents({ chapter, onNavigate }) {
     <div className="chapter-divider" />
     <h3>On TikTok</h3><p>I make videos about business, tech, and current events—usually something I&apos;ve been learning about.</p>
     <ExternalLink href={socials[1][1]}>Find me on TikTok</ExternalLink>
-  </div>;
-  if (chapter === "life") return <div className="chapter-content">
-    <p className="chapter-lede">When I&apos;m not working.</p>
-    <figure className="chapter-photo"><img src={julieCow} alt="Julie smiling beside a fluffy cow" loading="lazy" /><figcaption>A very good cow.</figcaption></figure>
-    <p>I like skiing, beach volleyball, chess, and a good excuse to get outside.</p>
-    <div className="interest-tags"><span>Skiing</span><span>Beach volleyball</span><span>Chess</span></div>
-    <button className="next-chapter" onClick={() => onNavigate("contact")}>Say hello <ArrowRight size={16} /></button>
   </div>;
   if (chapter === "reading") return <div className="chapter-content reading-chapter">
     <p className="chapter-lede">A few books I read this year.</p>
