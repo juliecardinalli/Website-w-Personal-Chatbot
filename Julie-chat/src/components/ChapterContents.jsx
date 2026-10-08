@@ -42,7 +42,6 @@ export default function ChapterContents({ chapter, onNavigate }) {
   </div>;
   if (chapter === "ai") return <div className="chapter-content">
     <p className="chapter-lede">Tools that make my day easier.</p>
-    <div className="project-note"><span className="eyebrow">Recent project</span><h3>A sales assistant</h3><p>I built an OpenCode assistant for call prep, planning, and follow-ups. It keeps customer context organized and connects to Miro and Salesforce.</p><span className="project-tags">OpenCode <i>·</i> Miro <i>·</i> Salesforce</span></div>
     <h3>Ask about me.</h3><p>This is an AI chat, not me. It can make mistakes, so <a href={email}>email me</a> if you want to check something.</p>
     <Suspense fallback={<div className="chat-loading" role="status">Opening Julie AI…</div>}><Chat /></Suspense>
     <p className="build-note">Messages are processed by Cloudflare Workers AI.</p>
