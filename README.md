@@ -15,6 +15,7 @@ This repository contains the **complete website**, including the 3D experience, 
 - React/Vite frontend and a separate Three.js world module
 - Retrieval-backed chat API on Cloudflare Workers
 - Static frontend hosted on Cloudflare Pages
+- A mouse-following photo-head stick-figure cursor, with native-pointer fallbacks for touch, reduced motion, and text entry
 
 The world and content can run locally without deploying a new backend. The chat component currently points to the live Worker; replace that endpoint to use your own service.
 
@@ -100,6 +101,18 @@ npx wrangler deploy --config embed-worker.toml
 Both Worker configuration files pin the personal account to prevent accidental deployments to the old organization account. Deploy the embedding Worker before the chat Worker on a new account. `embed-worker` is private and is reached by the chat Worker's `EMBED` service binding; only `julie-agent-worker` has a public `workers.dev` URL. The chat uses the `julie-qna-fast` Vectorize index (384 dimensions, cosine metric) and Workers AI. No API keys are shipped to the browser.
 
 Run the migration regression checks with `node --test backend/agent-worker.test.js` and `node --test Julie-chat/verify-island-labels.test.js`.
+
+## Cursor avatar
+
+`Julie-chat/src/components/AvatarCursor.jsx` draws an animated SVG stick body under Julie's cutout head. The decoration is click-through and uses a manual popover so it also appears above native chapter dialogs. A small dot marks the exact click point. It stays off on touch/coarse-pointer devices and with reduced motion, and restores the normal cursor over form fields and embedded media. Pointer movement is batched into one frame; no JavaScript animation loop runs while idle.
+
+Run its checks with `node --test Julie-chat/verify-avatar-cursor.test.js`.
+
+Asset: [`Julie-chat/src/assets/julie-cursor-head.png`](Julie-chat/src/assets/julie-cursor-head.png), 160 × 160 PNG with alpha. Created with the built-in image-generation tool from Julie's existing `julie-cow.jpg` photo, then downscaled for delivery. The original photo is unchanged.
+
+Final image prompt:
+
+> Use case: background-extraction. Asset type: transparent cutout head for a tiny personal-website cursor avatar. Input image 1 is the EDIT TARGET: the woman at the LEFT of the photo beside a fluffy white cow. Extract ONLY this woman's head, sunglasses, and the hair immediately framing her face, trimmed to around chin length. Preserve her exact recognizable face, expression, skin tone, sunglasses and brown highlighted hair from the photograph. Photographic cutout, NOT an illustration, NOT a redesigned face. Remove the entire cow, body, shirt, shoulders, fence, trees, sky and all background. No neck/body below the chin and no stick body yet (the website will draw it). Center the single head cutout, upright, with a small even transparent margin, on a genuinely transparent alpha background, clean natural edges, no shadow, no outline, no text, no checkerboard pixels. Output one small square PNG asset.
 
 ## Update chatbot knowledge
 

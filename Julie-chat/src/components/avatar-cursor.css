@@ -1,0 +1,50 @@
+/* Decorative only: the small dot is the exact click point, not the face. */
+.avatar-cursor {
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: 1px;
+  height: 1px;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: visible;
+  background: transparent;
+  color: #283c39;
+  pointer-events: none !important;
+  user-select: none;
+  will-change: transform;
+}
+.avatar-cursor *, .avatar-cursor::backdrop { pointer-events: none !important; }
+.avatar-cursor::backdrop { background: transparent; }
+.avatar-cursor-dot {
+  position: absolute;
+  left: -2.5px;
+  top: -2.5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #a65d41;
+  box-shadow: 0 0 0 1.5px #fffdf2;
+}
+.avatar-cursor-figure { position: absolute; left: var(--avatar-x, 10px); top: var(--avatar-y, 8px); width: 46px; height: 64px; }
+.avatar-cursor-doodle { position: relative; width: 100%; height: 100%; transform-origin: 50% 55%; transition: transform .12s ease-out; filter: drop-shadow(0 1px 1px #f1efe5); }
+.avatar-cursor-head { position: absolute; width: 46px; height: 46px; top: 0; left: 0; object-fit: contain; }
+.avatar-cursor-body { position: absolute; width: 46px; height: 34px; left: 0; top: 30px; }
+.avatar-arm { transform-origin: 23px 9px; }
+.avatar-leg { transform-origin: 23px 19px; }
+.avatar-cursor[data-walking="true"] .avatar-cursor-head { animation: avatar-bob .3s ease-in-out infinite alternate; }
+.avatar-cursor[data-walking="true"] .avatar-arm-left,
+.avatar-cursor[data-walking="true"] .avatar-leg-right { animation: avatar-step .3s ease-in-out infinite alternate; }
+.avatar-cursor[data-walking="true"] .avatar-arm-right,
+.avatar-cursor[data-walking="true"] .avatar-leg-left { animation: avatar-step .3s ease-in-out infinite alternate-reverse; }
+.avatar-cursor[data-pressed="true"] .avatar-cursor-doodle { transform: scale(.87) rotate(-7deg); }
+@keyframes avatar-step { from { transform: rotate(-23deg); } to { transform: rotate(23deg); } }
+@keyframes avatar-bob { from { transform: translateY(0) rotate(-3deg); } to { transform: translateY(-1.5px) rotate(3deg); } }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html.avatar-cursor-active, html.avatar-cursor-active *, html.avatar-cursor-active dialog::backdrop { cursor: none !important; }
+}
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .avatar-cursor { display: none !important; }
+}

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowUpRight, ArrowRight, X, Pause, Play, RotateCcw } from "lucide-react";
 import World from "./components/World";
 import ChapterContents from "./components/ChapterContents";
+import AvatarCursor from "./components/AvatarCursor";
 
 const chapters = [
   { id: "work", number: "01", label: "The day job", sub: "Solutions engineering", color: "#de7852" },
@@ -40,6 +41,7 @@ export default function App() {
     return () => window.removeEventListener("hashchange", syncHash);
   }, [openChapter]);
   return <div className="atlas">
+    <AvatarCursor layerKey={chapter} />
     <header className="site-header">
       <a href="#home" className="wordmark" aria-label="Julie Cardinalli home">julie<span>cardinalli</span><i>.</i></a>
       <div className="header-note"><span className="status-dot" /> Austin, Texas</div>
